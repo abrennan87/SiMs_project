@@ -1,0 +1,676 @@
+==== POWHEG (OR POSSIBLY HERWIG) WILL USE LHAPDFv6 ====
+LHAPDF 6.1.4 loading /home/ameliajb/workarea/SiMs_AtlasExternal_v2/LHAPDF_all/share/LHAPDF/PDFsets/MSTW2008lo68cl/MSTW2008lo68cl_0000.dat
+MSTW2008lo68cl PDF set, member #0, version 2; LHAPDF ID = 21000
+ Process in group number            0
+ A PDF is used, so alpha_s(MZ) is going to be modified
+ Old value of alpha_s from param_card:   0.11840000003576279     
+ New value of alpha_s from PDF lhapdf :  0.13938679500388487     
+ using LHAPDF
+ Warning! ptj set to xqcut=   150.00000000000000       to improve integration efficiency
+ Note that this might affect non-radiated jets,
+ e.g. from decays. Use cut_decays=F in run_card.
+ Warning! mmjj set to xqcut=   150.00000000000000       to improve integration efficiency
+ Note that this might affect non-radiated jets,
+ e.g. from decays. Use cut_decays=F in run_card.
+ Warning! drjj > 0 with xqcut > 0, set to 0
+ Warning! drjl > 0 with xqcut > 0, set to 0
+ *****************************************************
+ *               MadGraph/MadEvent                   *
+ *        --------------------------------           *
+ *          http://madgraph.hep.uiuc.edu             *
+ *          http://madgraph.phys.ucl.ac.be           *
+ *          http://madgraph.roma2.infn.it            *
+ *        --------------------------------           *
+ *                                                   *
+ *          PARAMETER AND COUPLING VALUES            *
+ *                                                   *
+ *****************************************************
+
+  External Params
+  ---------------------------------
+  
+ mdl_cabi =   0.22773599624633789     
+ aEWM1 =    127.90000152587891     
+ mdl_Gf =    1.1663700000000000E-005
+ aS =   0.11840000003576279     
+ mdl_ymdo =    5.0400001928210258E-003
+ mdl_ymup =    2.5500000920146704E-003
+ mdl_yms =   0.10100000351667404     
+ mdl_ymc =    1.2699999809265137     
+ mdl_ymb =    4.6999998092651367     
+ mdl_ymt =    172.00000000000000     
+ mdl_yme =    5.1099999109283090E-004
+ mdl_ymm =   0.10565999895334244     
+ mdl_ymtau =    1.7769999504089355     
+ mdl_MZ =    91.187599182128906     
+ mdl_Me =    5.1099999109283090E-004
+ mdl_MMU =   0.10565999895334244     
+ mdl_MTA =    1.7769999504089355     
+ mdl_MU =    2.5500000920146704E-003
+ mdl_MC =    1.2699999809265137     
+ mdl_MT =    172.00000000000000     
+ mdl_MD =    5.0400001928210258E-003
+ mdl_MS =   0.10100000351667404     
+ mdl_MB =    4.6999998092651367     
+ mdl_MH =    125.00000000000000     
+ mdl_MEtaD =    150.00000000000000     
+ mdl_MEtaU =    150.00000000000000     
+ mdl_MEta0 =    150.00000000000000     
+ mdl_MEtaP =    150.00000000000000     
+ mdl_MChi =    30.000000000000000     
+ mdl_WZ =    2.4951999187469482     
+ mdl_WW =    2.0850000381469727     
+ mdl_WT =    1.5083359479904175     
+ mdl_WH =    4.0699997916817665E-003
+ mdl_WEtaD =    5.9699997901916504     
+ mdl_WEtaU =    5.9699997901916504     
+ mdl_WEta0 =    5.9699997901916504     
+ mdl_WEtaP =    5.9699997901916504     
+ mdl_fUD =    1.0000000000000000     
+ mdl_fCS =    1.0000000000000000     
+ mdl_fTB =    1.0000000000000000     
+  Internal Params
+  ---------------------------------
+  
+ mdl_cos__cabi =   0.97418004116729484     
+ mdl_CKM1x1 =  ( 0.97418004116729484     ,  0.0000000000000000     )
+ mdl_sin__cabi =   0.22577255677182662     
+ mdl_CKM1x2 =  ( 0.22577255677182662     ,  0.0000000000000000     )
+ mdl_CKM1x3 =  (  0.0000000000000000     ,  0.0000000000000000     )
+ mdl_CKM2x1 =  (-0.22577255677182662     ,  0.0000000000000000     )
+ mdl_CKM2x2 =  ( 0.97418004116729484     ,  0.0000000000000000     )
+ mdl_CKM2x3 =  (  0.0000000000000000     ,  0.0000000000000000     )
+ mdl_CKM3x1 =  (  0.0000000000000000     ,  0.0000000000000000     )
+ mdl_CKM3x2 =  (  0.0000000000000000     ,  0.0000000000000000     )
+ mdl_CKM3x3 =  (  1.0000000000000000     ,  0.0000000000000000     )
+ mdl_fe =    0.0000000000000000     
+ mdl_fmu =    0.0000000000000000     
+ mdl_ftau =    0.0000000000000000     
+ mdl_MZ__exp__2 =    8315.1782446005964     
+ mdl_MZ__exp__4 =    69142189.239479050     
+ mdl_sqrt__2 =    1.4142135623730951     
+ mdl_MH__exp__2 =    15625.000000000000     
+ mdl_complexi =  (  0.0000000000000000     ,  1.0000000000000000     )
+ mdl_conjg__CKM1x1 =  ( 0.97418004116729484     , -0.0000000000000000     )
+ mdl_conjg__CKM1x2 =  ( 0.22577255677182662     , -0.0000000000000000     )
+ mdl_conjg__CKM1x3 =  (  0.0000000000000000     , -0.0000000000000000     )
+ mdl_conjg__CKM2x1 =  (-0.22577255677182662     , -0.0000000000000000     )
+ mdl_conjg__CKM2x2 =  ( 0.97418004116729484     , -0.0000000000000000     )
+ mdl_conjg__CKM2x3 =  (  0.0000000000000000     , -0.0000000000000000     )
+ mdl_conjg__CKM3x1 =  (  0.0000000000000000     , -0.0000000000000000     )
+ mdl_conjg__CKM3x2 =  (  0.0000000000000000     , -0.0000000000000000     )
+ mdl_conjg__CKM3x3 =  (  1.0000000000000000     , -0.0000000000000000     )
+ mdl_aEW =    7.8186081944468383E-003
+ mdl_MW =    79.824358925027582     
+ mdl_sqrt__aEW =    8.8422894062832158E-002
+ mdl_ee =   0.31345099817975469     
+ mdl_MW__exp__2 =    6371.9282777916305     
+ mdl_sw2 =   0.23369913544196141     
+ mdl_cw =   0.87538612312398378     
+ mdl_sqrt__sw2 =   0.48342438440976621     
+ mdl_sw =   0.48342438440976621     
+ mdl_g1 =   0.35807170104678437     
+ mdl_gw =   0.64839716052482665     
+ mdl_vev =    246.22056907348585     
+ mdl_vev__exp__2 =    60624.568634871219     
+ mdl_lam =   0.12886689630821149     
+ mdl_yb =    2.6995321708601618E-002
+ mdl_yc =    7.2944807332640301E-003
+ mdl_ydo =    2.8948177050647738E-005
+ mdl_ye =    2.9350233430754909E-006
+ mdl_ym =    6.0687782536781882E-004
+ mdl_ys =    5.8011227620215872E-004
+ mdl_yt =   0.98791394091683160     
+ mdl_ytau =    1.0206529209404104E-002
+ mdl_yup =    1.4646399071165677E-005
+ mdl_muH =    88.388347648318444     
+ mdl_ee__exp__2 =    9.8251528259884577E-002
+ mdl_sw__exp__2 =   0.23369913544196141     
+ mdl_cw__exp__2 =   0.76630086455803847     
+  Internal Params evaluated point by point
+  ----------------------------------------
+  
+ mdl_sqrt__aS =   0.34409301073367182     
+ mdl_G__exp__2 =    1.4878582811895344     
+  Couplings of SiM_TSD_UFO
+  ---------------------------------
+  
+        GC_41 =  -0.00000E+00  -0.28380E+00
+        GC_42 =   0.00000E+00   0.28380E+00
+        GC_47 =  -0.00000E+00  -0.28850E-01
+        GC_48 =   0.00000E+00   0.86550E-01
+        GC_49 =   0.00000E+00  -0.25495E+00
+        GC_50 =   0.00000E+00   0.31265E+00
+        GC_13 =   0.00000E+00   0.10000E+01
+        GC_21 =   0.00000E+00   0.10000E+01
+
+ Collider parameters:
+ --------------------
+
+ Running at P P   machine @    8000.0000000000000       GeV
+ PDF set = lhapdf 
+ alpha_s(Mz)= 0.1394 running at 1 loops.
+ alpha_s(Mz)= 0.1394 running at 1 loops.
+ Renormalization scale set on event-by-event basis
+ Factorization   scale set on event-by-event basis
+
+
+ getting user params
+Enter number of events and max and min iterations: 
+ Number of events and iterations         1000           5           3
+Enter desired fractional accuracy: 
+ Desired fractional accuracy:   0.10000000000000001     
+Enter 0 for fixed, 2 for adjustable grid: 
+Suppress amplitude (0 no, 1 yes)? 
+ Using suppressed amplitude.
+Exact helicity sum (0 yes, n = number/event)? 
+ Explicitly summing over helicities
+Enter Configuration Number: 
+Running Configuration Number:    2
+ Not subdividing B.W.
+ Attempting mappinvarients           1           6
+ Completed mapping           6
+ about to integrate           10        1000           5           3          10           1
+ Using non-zero grid deformation.
+ 10 dimensions   1000 events 10 invarients  5 iterations  1 config(s),  (0.99)
+ Using h-tuple random number sequence.
+ Error opening grid
+ Using Uniform Grid!
+ Using uniform alpha   1.0000000000000000     
+ Grid defined OK
+ Set CM energy to       8000.00
+ Mapping Graph           2  to config           2
+ Setting BW          -1           1   91.187599182128906     
+Setting grid   2    0.14063E-04   1
+Setting grid   3    0.14063E-04   1
+ Transforming s_hat 1/s            9   2.0220697942778228E-004
+ Masses: 0.255E-02 0.255E-02 0.106E+00 0.106E+00 0.300E+02 0.300E+02
+   2   1   2   3   4   5   6   7   8   9  10
+ Got moffset           1
+Using random seed offsets     2 :      2
+  with seed                   87
+ Ranmar initialization seeds       17614       12622
+  Particle       3       4       5       6
+      Et >     0.0     0.0     0.0     0.0
+       E >     0.0     0.0     0.0     0.0
+     Eta <    -1.0    -1.0    -1.0    -1.0
+   xqcut:      0.0     0.0     0.0     0.0
+d R # 3  >    -0.0     0.0     0.0     0.0
+d R # 4  >    -0.0    -0.0     0.0     0.0
+d R # 5  >    -0.0    -0.0    -0.0     0.0
+s min # 3>     0.0     0.0     0.0     0.0
+s min # 4>     0.0     0.0     0.0     0.0
+s min # 5>     0.0     0.0     0.0     0.0
+xqcutij # 3>     0.0     0.0     0.0     0.0
+xqcutij # 4>     0.0     0.0     0.0     0.0
+xqcutij # 5>     0.0     0.0     0.0     0.0
+ No cut BW           -1           1
+ alpha_s for scale    64.575193510959195       is   0.14808184976331065     
+ Added good helicity           17   1.2224633162016918E-005  in event            1
+ Added good helicity           18   7.5952459228451204E-006  in event            1
+ Added good helicity           19   4.5660960989530892E-005  in event            1
+ Added good helicity           20   3.1113898015969385E-005  in event            1
+ Added good helicity           21   7.2996627117095176       in event            1
+ Added good helicity           22   4.8938130304015131       in event            1
+ Added good helicity           23   7.8323786237423505       in event            1
+ Added good helicity           24   6.8155748450717377       in event            1
+ Added good helicity           25   8.1292514916110044       in event            1
+ Added good helicity           26   15.933759933459054       in event            1
+ Added good helicity           27   9.8117880043210768       in event            1
+ Added good helicity           28   3.2835484709739031       in event            1
+ Added good helicity           29   1.6354591441094758E-005  in event            1
+ Added good helicity           30   4.1267043657593365E-005  in event            1
+ Added good helicity           31   5.3332767596494027E-005  in event            1
+ Added good helicity           32   1.4753624098593384E-005  in event            1
+ Added good helicity           18   3.6638491906445920E-006  in event            1
+ Added good helicity           21   2.1743705136739822       in event            1
+ Added good helicity           22   8.3014444057365360       in event            1
+ Added good helicity           23  0.78699158640355837       in event            1
+ Added good helicity           24   2.7576861922849747       in event            1
+ Added good helicity           25   26.544313820578942       in event            1
+ Added good helicity           26   5.7517134674990151       in event            1
+ Added good helicity           27   3.6752560485893055       in event            1
+ Added good helicity           28   14.008210510880525       in event            1
+ Added good helicity           29   3.8535382123105610E-006  in event            1
+ Added good helicity           30   2.4293326612359418E-006  in event            1
+ Added good helicity           32   2.0789899512437862E-006  in event            1
+ Added good helicity           19   1.7362209480055969E-006  in event            2
+ Added good helicity           31   5.7632026104182819E-006  in event            2
+ Added good helicity           17   1.3154131286938165E-006  in event            3
+ Added good helicity           20   5.8683658882610407E-006  in event            4
+ Iteration  1   Mean: 0.4293E-03 Abs mean: 0.4293E-03   Fluctuation:  0.718E-04   0.516E-01    21.6%
+  1    0.4293E-03 0.4293E-03 +- 0.7182E-04      5.29
+ Writing out events   3.9707398391282760E-007   5.2905870901754612     
+ Relative summed weights:
+  0.5418E+00  0.4582E+00
+ Relative number of events:
+  0.5100E+00  0.4900E+00
+ Events:
+         510         490
+ Iteration  2   Mean: 0.3107E-03 Abs mean: 0.3107E-03   Fluctuation:  0.184E-04   0.148E-01    47.7%
+  2    0.3107E-03 0.3107E-03 +- 0.1837E-04      2.64
+ Relative summed weights:
+  0.5108E+00  0.4892E+00
+ Relative number of events:
+  0.5145E+00  0.4855E+00
+ Events:
+        1029         971
+ Iteration  3   Mean: 0.3718E-03 Abs mean: 0.3718E-03   Fluctuation:  0.171E-04   0.463E-01    59.3%
+  3    0.3718E-03 0.3718E-03 +- 0.1708E-04      2.91
+ Relative summed weights:
+  0.5224E+00  0.4776E+00
+ Relative number of events:
+  0.5002E+00  0.4998E+00
+ Events:
+        2001        1999
+ Accuracy:    0.067   0.100   0.035   3.570
+ Finished due to accuracy    6.6979864375741008E-002  0.10000000000000001     
+
+ -------------------------------------------------------------------------------
+ Accumulated results:   Integral =  0.3524E-03
+                        Std dev  =  0.1249E-04
+                       Cross sec =  0.3524E-03
+             Chi**2 per DoF.     =      3.5705
+ -------------------------------------------------------------------------------
+ Found          667  events.
+ Wrote           42  events.
+ Actual xsec    3.5238899585576908E-004
+ Correct abs xsec    3.5238899585576908E-004
+ Event xsec    3.5238899585576902E-004
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+-------------------------------------------------
+---------------------------
+ Results Last   3 iters: Integral =   0.3524E-03
+                     Abs integral =   0.3524E-03
+                          Std dev =   0.1249E-04
+                  Chi**2 per DoF. =      3.7942
+-------------------------------------------------
+---------------------------
+ Status  0.10000000000000001                4           5
+
+ls status:
+events.lhe
+input_app.txt
+input_sg.txt
+moffset.dat
+multijob.dat
+results.dat
+run_01_ftn26.gz
+run_01_log.txt
+run_01_results.dat
+run1_app.log
+TSD_200_650_M3_ftn26.gz
+TSD_200_650_M3_log.txt
+TSD_200_650_M3_results.dat
+TSD_30_150_M8pi_ftn26.gz
+TSD_30_150_M8pi_log.txt
+TSD_30_150_M8pi_qcut_up_ftn26.gz
+TSD_30_150_M8pi_qcut_up_log.txt
+TSD_30_150_M8pi_qcut_up_results.dat
+TSD_30_150_M8pi_results.dat
+TSD_700_1000_M8pi_ftn26.gz
+TSD_700_1000_M8pi_log.txt
+TSD_700_1000_M8pi_results.dat
+==== POWHEG (OR POSSIBLY HERWIG) WILL USE LHAPDFv6 ====
+LHAPDF 6.1.4 loading /home/ameliajb/workarea/SiMs_AtlasExternal_v2/LHAPDF_all/share/LHAPDF/PDFsets/MSTW2008lo68cl/MSTW2008lo68cl_0000.dat
+MSTW2008lo68cl PDF set, member #0, version 2; LHAPDF ID = 21000
+ Process in group number            0
+ A PDF is used, so alpha_s(MZ) is going to be modified
+ Old value of alpha_s from param_card:   0.11840000003576279     
+ New value of alpha_s from PDF lhapdf :  0.13938679500388487     
+ using LHAPDF
+ Warning! ptj set to xqcut=   150.00000000000000       to improve integration efficiency
+ Note that this might affect non-radiated jets,
+ e.g. from decays. Use cut_decays=F in run_card.
+ Warning! mmjj set to xqcut=   150.00000000000000       to improve integration efficiency
+ Note that this might affect non-radiated jets,
+ e.g. from decays. Use cut_decays=F in run_card.
+ Warning! drjj > 0 with xqcut > 0, set to 0
+ Warning! drjl > 0 with xqcut > 0, set to 0
+ *****************************************************
+ *               MadGraph/MadEvent                   *
+ *        --------------------------------           *
+ *          http://madgraph.hep.uiuc.edu             *
+ *          http://madgraph.phys.ucl.ac.be           *
+ *          http://madgraph.roma2.infn.it            *
+ *        --------------------------------           *
+ *                                                   *
+ *          PARAMETER AND COUPLING VALUES            *
+ *                                                   *
+ *****************************************************
+
+  External Params
+  ---------------------------------
+  
+ mdl_cabi =   0.22773599624633789     
+ aEWM1 =    127.90000152587891     
+ mdl_Gf =    1.1663700000000000E-005
+ aS =   0.11840000003576279     
+ mdl_ymdo =    5.0400001928210258E-003
+ mdl_ymup =    2.5500000920146704E-003
+ mdl_yms =   0.10100000351667404     
+ mdl_ymc =    1.2699999809265137     
+ mdl_ymb =    4.6999998092651367     
+ mdl_ymt =    172.00000000000000     
+ mdl_yme =    5.1099999109283090E-004
+ mdl_ymm =   0.10565999895334244     
+ mdl_ymtau =    1.7769999504089355     
+ mdl_MZ =    91.187599182128906     
+ mdl_Me =    5.1099999109283090E-004
+ mdl_MMU =   0.10565999895334244     
+ mdl_MTA =    1.7769999504089355     
+ mdl_MU =    2.5500000920146704E-003
+ mdl_MC =    1.2699999809265137     
+ mdl_MT =    172.00000000000000     
+ mdl_MD =    5.0400001928210258E-003
+ mdl_MS =   0.10100000351667404     
+ mdl_MB =    4.6999998092651367     
+ mdl_MH =    125.00000000000000     
+ mdl_MEtaD =    150.00000000000000     
+ mdl_MEtaU =    150.00000000000000     
+ mdl_MEta0 =    150.00000000000000     
+ mdl_MEtaP =    150.00000000000000     
+ mdl_MChi =    30.000000000000000     
+ mdl_WZ =    2.4951999187469482     
+ mdl_WW =    2.0850000381469727     
+ mdl_WT =    1.5083359479904175     
+ mdl_WH =    4.0699997916817665E-003
+ mdl_WEtaD =    5.9699997901916504     
+ mdl_WEtaU =    5.9699997901916504     
+ mdl_WEta0 =    5.9699997901916504     
+ mdl_WEtaP =    5.9699997901916504     
+ mdl_fUD =    1.0000000000000000     
+ mdl_fCS =    1.0000000000000000     
+ mdl_fTB =    1.0000000000000000     
+  Internal Params
+  ---------------------------------
+  
+ mdl_cos__cabi =   0.97418004116729484     
+ mdl_CKM1x1 =  ( 0.97418004116729484     ,  0.0000000000000000     )
+ mdl_sin__cabi =   0.22577255677182662     
+ mdl_CKM1x2 =  ( 0.22577255677182662     ,  0.0000000000000000     )
+ mdl_CKM1x3 =  (  0.0000000000000000     ,  0.0000000000000000     )
+ mdl_CKM2x1 =  (-0.22577255677182662     ,  0.0000000000000000     )
+ mdl_CKM2x2 =  ( 0.97418004116729484     ,  0.0000000000000000     )
+ mdl_CKM2x3 =  (  0.0000000000000000     ,  0.0000000000000000     )
+ mdl_CKM3x1 =  (  0.0000000000000000     ,  0.0000000000000000     )
+ mdl_CKM3x2 =  (  0.0000000000000000     ,  0.0000000000000000     )
+ mdl_CKM3x3 =  (  1.0000000000000000     ,  0.0000000000000000     )
+ mdl_fe =    0.0000000000000000     
+ mdl_fmu =    0.0000000000000000     
+ mdl_ftau =    0.0000000000000000     
+ mdl_MZ__exp__2 =    8315.1782446005964     
+ mdl_MZ__exp__4 =    69142189.239479050     
+ mdl_sqrt__2 =    1.4142135623730951     
+ mdl_MH__exp__2 =    15625.000000000000     
+ mdl_complexi =  (  0.0000000000000000     ,  1.0000000000000000     )
+ mdl_conjg__CKM1x1 =  ( 0.97418004116729484     , -0.0000000000000000     )
+ mdl_conjg__CKM1x2 =  ( 0.22577255677182662     , -0.0000000000000000     )
+ mdl_conjg__CKM1x3 =  (  0.0000000000000000     , -0.0000000000000000     )
+ mdl_conjg__CKM2x1 =  (-0.22577255677182662     , -0.0000000000000000     )
+ mdl_conjg__CKM2x2 =  ( 0.97418004116729484     , -0.0000000000000000     )
+ mdl_conjg__CKM2x3 =  (  0.0000000000000000     , -0.0000000000000000     )
+ mdl_conjg__CKM3x1 =  (  0.0000000000000000     , -0.0000000000000000     )
+ mdl_conjg__CKM3x2 =  (  0.0000000000000000     , -0.0000000000000000     )
+ mdl_conjg__CKM3x3 =  (  1.0000000000000000     , -0.0000000000000000     )
+ mdl_aEW =    7.8186081944468383E-003
+ mdl_MW =    79.824358925027582     
+ mdl_sqrt__aEW =    8.8422894062832158E-002
+ mdl_ee =   0.31345099817975469     
+ mdl_MW__exp__2 =    6371.9282777916305     
+ mdl_sw2 =   0.23369913544196141     
+ mdl_cw =   0.87538612312398378     
+ mdl_sqrt__sw2 =   0.48342438440976621     
+ mdl_sw =   0.48342438440976621     
+ mdl_g1 =   0.35807170104678437     
+ mdl_gw =   0.64839716052482665     
+ mdl_vev =    246.22056907348585     
+ mdl_vev__exp__2 =    60624.568634871219     
+ mdl_lam =   0.12886689630821149     
+ mdl_yb =    2.6995321708601618E-002
+ mdl_yc =    7.2944807332640301E-003
+ mdl_ydo =    2.8948177050647738E-005
+ mdl_ye =    2.9350233430754909E-006
+ mdl_ym =    6.0687782536781882E-004
+ mdl_ys =    5.8011227620215872E-004
+ mdl_yt =   0.98791394091683160     
+ mdl_ytau =    1.0206529209404104E-002
+ mdl_yup =    1.4646399071165677E-005
+ mdl_muH =    88.388347648318444     
+ mdl_ee__exp__2 =    9.8251528259884577E-002
+ mdl_sw__exp__2 =   0.23369913544196141     
+ mdl_cw__exp__2 =   0.76630086455803847     
+  Internal Params evaluated point by point
+  ----------------------------------------
+  
+ mdl_sqrt__aS =   0.34409301073367182     
+ mdl_G__exp__2 =    1.4878582811895344     
+  Couplings of SiM_TSD_UFO
+  ---------------------------------
+  
+        GC_41 =  -0.00000E+00  -0.28380E+00
+        GC_42 =   0.00000E+00   0.28380E+00
+        GC_47 =  -0.00000E+00  -0.28850E-01
+        GC_48 =   0.00000E+00   0.86550E-01
+        GC_49 =   0.00000E+00  -0.25495E+00
+        GC_50 =   0.00000E+00   0.31265E+00
+        GC_13 =   0.00000E+00   0.10000E+01
+        GC_21 =   0.00000E+00   0.10000E+01
+
+ Collider parameters:
+ --------------------
+
+ Running at P P   machine @    8000.0000000000000       GeV
+ PDF set = lhapdf 
+ alpha_s(Mz)= 0.1394 running at 1 loops.
+ alpha_s(Mz)= 0.1394 running at 1 loops.
+ Renormalization scale set on event-by-event basis
+ Factorization   scale set on event-by-event basis
+
+
+ getting user params
+Enter number of events and max and min iterations: 
+ Number of events and iterations         2000           9           3
+Enter desired fractional accuracy: 
+ Desired fractional accuracy:   -2084500.0000000000     
+Enter 0 for fixed, 2 for adjustable grid: 
+Suppress amplitude (0 no, 1 yes)? 
+ Using suppressed amplitude.
+Exact helicity sum (0 yes, n = number/event)? 
+ Explicitly summing over helicities
+Enter Configuration Number: 
+Running Configuration Number:    2
+ Not subdividing B.W.
+ Attempting mappinvarients           1           6
+ Completed mapping           6
+ about to integrate           10        2000           9           3          10           1
+ Using non-zero grid deformation.
+ 10 dimensions   2000 events 10 invarients  9 iterations  1 config(s),  (0.99)
+ Using h-tuple random number sequence.
+ Error opening grid
+ Using Uniform Grid!
+ Using uniform alpha   1.0000000000000000     
+ Grid defined OK
+ Set CM energy to       8000.00
+ Mapping Graph           2  to config           2
+ Setting BW          -1           1   91.187599182128906     
+Setting grid   2    0.14063E-04   1
+Setting grid   3    0.14063E-04   1
+ Transforming s_hat 1/s            9   2.0220697942778228E-004
+ Masses: 0.255E-02 0.255E-02 0.106E+00 0.106E+00 0.300E+02 0.300E+02
+   2   1   2   3   4   5   6   7   8   9  10
+ Got moffset           1
+Using random seed offsets     2 :      2
+  with seed                   90
+ Ranmar initialization seeds       21271       12625
+  Particle       3       4       5       6
+      Et >     0.0     0.0     0.0     0.0
+       E >     0.0     0.0     0.0     0.0
+     Eta <    -1.0    -1.0    -1.0    -1.0
+   xqcut:      0.0     0.0     0.0     0.0
+d R # 3  >    -0.0     0.0     0.0     0.0
+d R # 4  >    -0.0    -0.0     0.0     0.0
+d R # 5  >    -0.0    -0.0    -0.0     0.0
+s min # 3>     0.0     0.0     0.0     0.0
+s min # 4>     0.0     0.0     0.0     0.0
+s min # 5>     0.0     0.0     0.0     0.0
+xqcutij # 3>     0.0     0.0     0.0     0.0
+xqcutij # 4>     0.0     0.0     0.0     0.0
+xqcutij # 5>     0.0     0.0     0.0     0.0
+ No cut BW           -1           1
+ alpha_s for scale    61.681254425032222       is   0.14931506055038821     
+ Added good helicity           17   9.4989138921749638E-006  in event            1
+ Added good helicity           18   4.8069736128207549E-006  in event            1
+ Added good helicity           19   7.8271648029653027E-006  in event            1
+ Added good helicity           20   4.0021727525245673E-006  in event            1
+ Added good helicity           21   10.006723811800272       in event            1
+ Added good helicity           22   1.0012013524244128       in event            1
+ Added good helicity           23   19.197636982739986       in event            1
+ Added good helicity           24   3.0788658292382167       in event            1
+ Added good helicity           25   2.7295245718332959       in event            1
+ Added good helicity           26   7.3151330003744883       in event            1
+ Added good helicity           27   20.310825213000765       in event            1
+ Added good helicity           28  0.36004174326717575       in event            1
+ Added good helicity           29   2.4942434082553301E-006  in event            1
+ Added good helicity           30   8.9832821946629808E-006  in event            1
+ Added good helicity           31   8.5279115544287870E-006  in event            1
+ Added good helicity           32   1.2634591407932598E-006  in event            1
+ Added good helicity           17   1.3478807617212014E-006  in event            1
+ Added good helicity           21   1.3899438022910489       in event            1
+ Added good helicity           22   1.8050291591965386E-002  in event            1
+ Added good helicity           23   33.144248825544885       in event            1
+ Added good helicity           24   4.2341503647483272       in event            1
+ Added good helicity           25  0.69155401403005379       in event            1
+ Added good helicity           26   5.9538701993393804E-002  in event            1
+ Added good helicity           27   21.836632895174940       in event            1
+ Added good helicity           28   2.6258746141254345       in event            1
+ Added good helicity           31   1.5668645047339714E-006  in event            1
+ Added good helicity           32   1.2425373031532614E-006  in event            1
+ Added good helicity           19   1.1027192197977058E-006  in event            2
+ Added good helicity           29   4.9345957325780063E-006  in event            2
+ Added good helicity           20   1.0760831434400377E-006  in event            3
+ Added good helicity           30   1.3935019788061529E-006  in event            3
+ Added good helicity           18   4.3996589444725374E-006  in event            4
+ Iteration  1   Mean: 0.3588E-03 Abs mean: 0.3588E-03   Fluctuation:  0.372E-04   0.355E-01    21.5%
+  1    0.3588E-03 0.3588E-03 +- 0.3718E-04      4.63
+ Writing out events   9.2937582486353031E-008   4.6342421648629726     
+ Relative summed weights:
+  0.4419E+00  0.5581E+00
+ Relative number of events:
+  0.5055E+00  0.4945E+00
+ Events:
+        1011         989
+ Iteration  2   Mean: 0.3989E-03 Abs mean: 0.3989E-03   Fluctuation:  0.205E-04   0.327E-01    47.2%
+  2    0.3989E-03 0.3989E-03 +- 0.2051E-04      3.25
+ Relative summed weights:
+  0.4930E+00  0.5070E+00
+ Relative number of events:
+  0.4960E+00  0.5040E+00
+ Events:
+        1984        2016
+ Iteration  3   Mean: 0.3751E-03 Abs mean: 0.3751E-03   Fluctuation:  0.756E-05   0.127E-01    58.9%
+  3    0.3751E-03 0.3751E-03 +- 0.7560E-05      1.80
+ Relative summed weights:
+  0.4940E+00  0.5060E+00
+ Relative number of events:
+  0.5072E+00  0.4928E+00
+ Events:
+        4058        3942
+ Found         1205  events.
+ Wrote          490  events.
+ Actual xsec    3.7768229183663402E-004
+ Correct abs xsec    3.7768229183663402E-004
+ Event xsec    3.7768229183663028E-004
+ Events wgts > 1:           14
+ % Cross section > 1:    3.0549964509159450E-006  0.80887998112376680     
+ Checking number of events   787.27873733346360              490  chi2:   0.71812584850612726     
+ Found         1205  events.
+ Wrote          510  events.
+ Actual xsec    3.7768229183663402E-004
+ Correct abs xsec    3.7768229183663402E-004
+ Event xsec    3.7768229183663543E-004
+ Events wgts > 1:           14
+ % Cross section > 1:    2.9361240300761113E-006  0.77740579676055266     
+ Iteration  4   Mean: 0.3768E-03 Abs mean: 0.3768E-03   Fluctuation:  0.554E-05   0.345E-01    63.5%
+  4    0.3768E-03 0.3768E-03 +- 0.5539E-05      1.86
+ Relative summed weights:
+  0.4948E+00  0.5052E+00
+ Relative number of events:
+  0.4976E+00  0.5024E+00
+ Events:
+        7962        8038
+ Found         2423  events.
+ Wrote          510  events.
+ Actual xsec    3.7737003843542913E-004
+ Correct abs xsec    3.7737003843542913E-004
+ Event xsec    3.7737003843542550E-004
+ Events wgts > 1:            8
+ % Cross section > 1:    2.5516230795985925E-006  0.67615942436172471     
+ Checking number of events   786.62784511865198              510  chi2:   0.59776005123300402     
+ Found         2423  events.
+ Wrote          510  events.
+ Actual xsec    3.7737003843542913E-004
+ Correct abs xsec    3.7737003843542913E-004
+ Event xsec    3.7737003843542550E-004
+ Events wgts > 1:            8
+ % Cross section > 1:    2.5516230795985925E-006  0.67615942436172471     
+ Iteration  5   Mean: 0.3778E-03 Abs mean: 0.3778E-03   Fluctuation:  0.378E-05   0.572E-01    67.1%
+  5    0.3778E-03 0.3778E-03 +- 0.3777E-05      1.79
+ Relative summed weights:
+  0.5008E+00  0.4992E+00
+ Relative number of events:
+  0.5005E+00  0.4995E+00
+ Events:
+       16017       15983
+ Found         4659  events.
+ Wrote         1330  events.
+ Actual xsec    3.7713821201616461E-004
+ Correct abs xsec    3.7713821201616461E-004
+ Event xsec    3.7713821201614488E-004
+ Events wgts > 1:            8
+ % Cross section > 1:    3.6298665974625152E-006  0.96247648257586915     
+ Checking number of events   786.14460294769515             1330  chi2:    5.1433709585887603E-002
+
+ -------------------------------------------------------------------------------
+ Accumulated results:   Integral =  0.3775E-03
+                        Std dev  =  0.2849E-05
+                       Cross sec =  0.3891E+00
+             Chi**2 per DoF.     =
+-------------------------------------------------
+---------------------------
+ Results Last   3 iters: Integral =   0.3771E-03
+                     Abs integral =   0.3771E-03
+                          Std dev =   0.2885E-05
+                  Chi**2 per DoF. =      0.0514
+-------------------------------------------------
+---------------------------
+ Status  -2084500.0000000000                6           9
+ We found enough events        1330   786.14460294769515     
+
+ls status:
+events.lhe
+ftn25
+ftn26
+input_app.txt
+input_sg.txt
+log.txt
+moffset.dat
+multijob.dat
+results.dat
+run_01_ftn26.gz
+run_01_log.txt
+run_01_results.dat
+run1_app.log
+TSD_200_650_M3_ftn26.gz
+TSD_200_650_M3_log.txt
+TSD_200_650_M3_results.dat
+TSD_30_150_M8pi_ftn26.gz
+TSD_30_150_M8pi_log.txt
+TSD_30_150_M8pi_qcut_up_ftn26.gz
+TSD_30_150_M8pi_qcut_up_log.txt
+TSD_30_150_M8pi_qcut_up_results.dat
+TSD_30_150_M8pi_results.dat
+TSD_700_1000_M8pi_ftn26.gz
+TSD_700_1000_M8pi_log.txt
+TSD_700_1000_M8pi_results.dat

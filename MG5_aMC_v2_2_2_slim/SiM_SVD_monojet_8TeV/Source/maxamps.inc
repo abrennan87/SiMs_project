@@ -1,0 +1,1 @@
+../SubProcesses/P0_ssx_chichix/maxamps.inc

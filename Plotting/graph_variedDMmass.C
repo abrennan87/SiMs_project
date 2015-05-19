@@ -1,0 +1,51 @@
+#include <TColor.h>
+
+void graph_variedDMmass() {
+   
+   TCanvas *c1 = new TCanvas("c1","sigma_limits_variedDMmass",200,10,700,500);
+//   c1->SetLogx();
+
+   TGraph *gr1 = new TGraph("text_graphs/limits_SVD_Med1000_1.txt");
+   TGraph *gr2 = new TGraph("text_graphs/limits_SVD_Med1200_1.txt");
+
+   TString xAxTitle = TString("m_{#chi} [GeV]");
+   TString yAxTitle = TString("#sigma(pp #rightarrow Z#chi#chi) #times BR(Z #rightarrow l+l-) [fb]");
+
+   gr1->SetTitle("");
+   gr1->GetXaxis()->SetTitle(xAxTitle);
+   gr1->GetYaxis()->SetTitle(yAxTitle);
+   gr1->GetYaxis()->SetTitleOffset(1.2);
+   gr1->GetXaxis()->SetTitleOffset(1.2);
+   gr1->GetXaxis()->SetLimits(10., 1000.);
+   gr1->SetMinimum(0);
+   gr1->SetMaximum(40);
+
+   gr1->SetLineColor(kOrange+7);
+   gr1->SetLineWidth(2);
+   gr1->SetMarkerColor(kOrange+7);
+   gr1->SetMarkerStyle(21);
+
+   gr2->SetLineColor(kBlue-7);
+   gr2->SetLineWidth(2);
+   gr2->SetMarkerColor(kBlue-7);
+   gr2->SetMarkerStyle(22);   
+
+   gr1->Draw("ALP");
+   gr2->Draw("same LP");
+
+   // TCanvas::Update() draws the frame, after which one can change it
+   c1->Update();
+
+   TLegend* l = new TLegend(.55, .70, .89, .85);
+   l->SetTextSize(0.035);
+   l->SetTextFont(42);
+   l->SetBorderSize(0);
+   l->AddEntry(gr1,"m_{med} = 1000 GeV","l");
+   l->AddEntry(gr2,"m_{med} = 1200 GeV","l");
+   l->SetFillColor(0);
+   l->Draw();
+
+   c1->Modified();
+   c1->SaveAs("sigma_limits_variedDMmass.pdf");
+}
+

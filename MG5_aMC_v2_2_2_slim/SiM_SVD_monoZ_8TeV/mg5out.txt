@@ -1,0 +1,104 @@
+[?1034h************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 5.2.2.2                                  *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /imports/home/ameliajb/workarea/SiMs_AtlasExternal_v2/MG5_aMC_v2_2_2/SiM_SVD_monoZ_8TeV/Cards/me5_configuration.txt  
+INFO: load configuration from /imports/home/ameliajb/workarea/SiMs_AtlasExternal_v2/MG5_aMC_v2_2_2/input/mg5_configuration.txt  
+INFO: load configuration from /imports/home/ameliajb/workarea/SiMs_AtlasExternal_v2/MG5_aMC_v2_2_2/SiM_SVD_monoZ_8TeV/Cards/me5_configuration.txt  
+Using default text editor "vi". Set another one in ./input/mg5_configuration.txt
+Using default eps viewer "evince". Set another one in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+generate_events -f SVD_30_150_M8pi_scale_down --nb_core=1
+Generating 10000 events with run name SVD_30_150_M8pi_scale_down
+survey  SVD_30_150_M8pi_scale_down 
+INFO: compile directory 
+[1;34mNot able to open file /imports/home/ameliajb/workarea/SiMs_AtlasExternal_v2/MG5_aMC_v2_2_2/SiM_SVD_monoZ_8TeV/crossx.html since no program configured.Please set one in ./input/mg5_configuration.txt[0m
+INFO: Using LHAPDF v6.1.4 interface for PDFs 
+[1;34mSince icckw>0, We change the value of 'drjj' to 0[0m
+[1;34mSince icckw>0, We change the value of 'drjl' to 0[0m
+Using random number seed offset = 1065
+INFO: Running Survey 
+Creating Jobs
+Working on SubProcesses
+    P0_uux_zchichix_z_epem 
+    P0_uux_zchichix_z_mupmum 
+    P0_ccx_zchichix_z_epem 
+    P0_ccx_zchichix_z_mupmum 
+    P0_ddx_zchichix_z_epem 
+    P0_ddx_zchichix_z_mupmum 
+    P0_ssx_zchichix_z_epem 
+    P0_ssx_zchichix_z_mupmum 
+INFO:  Idle: 4,  Running: 1,  Completed: 3 [ current time: 00h52 ] 
+INFO:  Idle: 1,  Running: 1,  Completed: 6 [  4.7s  ] 
+INFO:  Idle: 0,  Running: 0,  Completed: 8 [  11.7s  ] 
+INFO: End survey 
+refine 10000
+Creating Jobs
+INFO: Refine results to 10000 
+    P0_uux_zchichix_z_epem 
+    P0_uux_zchichix_z_mupmum 
+    P0_ccx_zchichix_z_epem 
+    P0_ccx_zchichix_z_mupmum 
+    P0_ddx_zchichix_z_epem 
+    P0_ddx_zchichix_z_mupmum 
+    P0_ssx_zchichix_z_epem 
+    P0_ssx_zchichix_z_mupmum 
+INFO:  Idle: 15,  Running: 1,  Completed: 0 [ current time: 00h53 ] 
+INFO:  Idle: 13,  Running: 1,  Completed: 2 [  4.6s  ] 
+INFO:  Idle: 11,  Running: 1,  Completed: 4 [  7.6s  ] 
+INFO:  Idle: 9,  Running: 1,  Completed: 6 [  13.7s  ] 
+INFO:  Idle: 8,  Running: 1,  Completed: 7 [  17.7s  ] 
+INFO:  Idle: 7,  Running: 1,  Completed: 8 [  21.7s  ] 
+INFO:  Idle: 5,  Running: 1,  Completed: 10 [  27s  ] 
+INFO:  Idle: 2,  Running: 1,  Completed: 13 [  31.8s  ] 
+INFO:  Idle: 0,  Running: 1,  Completed: 15 [  35.3s  ] 
+INFO: Combining runs 
+INFO: finish refine 
+refine 10000
+Creating Jobs
+INFO: Refine results to 10000 
+    P0_uux_zchichix_z_epem 
+    P0_uux_zchichix_z_mupmum 
+    P0_ccx_zchichix_z_epem 
+    P0_ccx_zchichix_z_mupmum 
+    P0_ddx_zchichix_z_epem 
+    P0_ddx_zchichix_z_mupmum 
+    P0_ssx_zchichix_z_epem 
+    P0_ssx_zchichix_z_mupmum 
+INFO: Combining runs 
+INFO: finish refine 
+combine_events
+INFO: Combining Events 
+  === Results Summary for run: SVD_30_150_M8pi_scale_down tag: tag_2 ===
+
+     Cross-section :   2.228 +- 0.007697 pb
+     Nb of events :  10000
+ 
+running syscalc on mode parton
+store_events
+INFO: Storing parton level results 
+INFO: End Parton 
+reweight -from_cards
+decay_events -from_cards
+quit
+INFO:  
+ 
+INFO:  
+ 
+launch in debug mode
