@@ -5,12 +5,12 @@ void graph_variedMedmass() {
    TCanvas *c1 = new TCanvas("c1","sigma_limits_variedMedmass",200,10,700,500);
    c1->SetLogx();
 
-   TGraph *gr1 = new TGraph("text_graphs/limits_SVD_DM10_1.txt");
-   TGraph *gr2 = new TGraph("text_graphs/limits_SVD_DM200_1.txt");
-   TGraph *gr3 = new TGraph("text_graphs/limits_SVD_DM400_1.txt");
-   TGraph *gr4 = new TGraph("text_graphs/limits_SVD_DM1000_1.txt");
+   TGraphErrors *gr1 = new TGraphErrors("text_graphs/limits_SVD_DM10_1.txt");
+   TGraphErrors *gr2 = new TGraphErrors("text_graphs/limits_SVD_DM200_1.txt");
+   TGraphErrors *gr3 = new TGraphErrors("text_graphs/limits_SVD_DM400_1.txt");
+   TGraphErrors *gr4 = new TGraphErrors("text_graphs/limits_SVD_DM1000_1.txt");
 
-   TString xAxTitle = TString("m_{#chi} [GeV]");
+   TString xAxTitle = TString("m_{med} [GeV]");
    TString yAxTitle = TString("#sigma(pp #rightarrow Z#chi#chi) #times BR(Z #rightarrow l+l-) [fb]");
 
    gr1->SetTitle("");
@@ -18,7 +18,7 @@ void graph_variedMedmass() {
    gr1->GetYaxis()->SetTitle(yAxTitle);
    gr1->GetYaxis()->SetTitleOffset(1.2);
    gr1->GetXaxis()->SetTitleOffset(1.2);
-   gr1->GetXaxis()->SetLimits(1000., 1200.);
+   //gr1->GetXaxis()->SetLimits(1000., 1200.);
    gr1->SetMinimum(0);
    gr1->SetMaximum(40);
 
@@ -42,10 +42,10 @@ void graph_variedMedmass() {
    gr4->SetMarkerColor(kGreen+2);
    gr4->SetMarkerStyle(22);  
 
-   gr1->Draw("ALP");
-   gr2->Draw("same LP");
-   gr3->Draw("same LP");
-   gr4->Draw("same LP");
+   gr1->Draw("AP");
+   gr2->Draw("same P");
+   gr3->Draw("same P");
+   gr4->Draw("same P");
 
    // TCanvas::Update() draws the frame, after which one can change it
    c1->Update();
