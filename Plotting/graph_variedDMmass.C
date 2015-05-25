@@ -5,8 +5,8 @@ void graph_variedDMmass() {
    TCanvas *c1 = new TCanvas("c1","sigma_limits_variedDMmass",200,10,700,500);
 //   c1->SetLogx();
 
-   TGraph *gr1 = new TGraph("text_graphs/limits_SVD_Med1000_1.txt");
-   TGraph *gr2 = new TGraph("text_graphs/limits_SVD_Med1200_1.txt");
+   TGraphErrors *gr1 = new TGraphErrors("text_graphs/limits_SVD_Med1000_1.txt");
+   TGraphErrors *gr2 = new TGraphErrors("text_graphs/limits_SVD_Med1200_1.txt");
 
    TString xAxTitle = TString("m_{#chi} [GeV]");
    TString yAxTitle = TString("#sigma(pp #rightarrow Z#chi#chi) #times BR(Z #rightarrow l+l-) [fb]");
@@ -16,7 +16,7 @@ void graph_variedDMmass() {
    gr1->GetYaxis()->SetTitle(yAxTitle);
    gr1->GetYaxis()->SetTitleOffset(1.2);
    gr1->GetXaxis()->SetTitleOffset(1.2);
-   gr1->GetXaxis()->SetLimits(10., 1000.);
+   //gr1->GetXaxis()->SetLimits(10., 1000.);
    gr1->SetMinimum(0);
    gr1->SetMaximum(40);
 
@@ -30,8 +30,8 @@ void graph_variedDMmass() {
    gr2->SetMarkerColor(kBlue-7);
    gr2->SetMarkerStyle(22);   
 
-   gr1->Draw("ALP");
-   gr2->Draw("same LP");
+   gr1->Draw("AP");
+   gr2->Draw("same P");
 
    // TCanvas::Update() draws the frame, after which one can change it
    c1->Update();
