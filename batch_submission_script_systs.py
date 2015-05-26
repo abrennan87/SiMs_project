@@ -214,10 +214,10 @@ for modelType in masspoints.model:
                         		jobName = "MCGenJob" #"RecoJob"; #"EvGenJob"; #job name to appear on the queue and log files
 
 	                        	# selection of queue
-        	                	#queue = "mel_short"
-                	        	#walt = "walltime=01:00:00"
-					queue = "mel_long"
-                                        walt = "walltime=24:00:00"
+        	                	queue = "mel_short"
+                	        	walt = "walltime=01:00:00"
+					#queue = "mel_long"
+                                        #walt = "walltime=24:00:00"
 
 					#os.system("qsub -q " + queue + " -l " + walt + " -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)	
 	                       		os.system("qsub -q " + queue + " -l " + walt + " -l ncpus=6 -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)	# will only run if 6 cpus available

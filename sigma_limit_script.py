@@ -11,7 +11,7 @@ MGdir = localDir + "MG5_aMC_v2_2_2/"
 cutflowDir = localDir + "CutFlow/txt_outputs/"
 
 # create the limits file
-limits = localDir + "limits_store.txt"
+limits = localDir + "limits_store_TSD_W1.txt"
 with open(limits, "w") as f:
         f.write("This file is created with sigma_limit_script.py, it reads masses etc from masspoints_2.py, cross sections from the LHEs, acceptances from the Cutflow/txt_outputs/cutflow_output_XXX.txt outputs, and calculates the limit on sigma which is output to limits_store.txt. All values are in fb. 'stat-vary acc' is the acceptance varied downwards by the statistical uncertainty, stat_sig_obs and stat_f_obs are the limits calculated with this new acceptance.\n\n")
 
@@ -50,11 +50,15 @@ for modelType in masspoints_2.model:
 
                                         print "Looking for baseName " + baseName
 
+					# want to continue if it can't find a sample (still need to test this)
+					events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + baseName + "/unweighted_events.lhe"
+					if not os.path.isfile(events_file):
+						continue
+
 					with open(limits, "a") as f:
        						f.write("\n\n" + baseName + ": ")
 
 					# this should be changed for mono-jet!
-					events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + baseName + "/unweighted_events.lhe"
 					if os.path.exists(events_file):
 
 						with open(events_file) as g:
@@ -128,6 +132,7 @@ for modelType in masspoints_2.model:
                                                                                 stat_acc = line[i+1:j-1]
 										# vary the nominal acceptance downwards, this will give a larger variation in sigma which is more conservative
 										var_acc = float(list_acc[cut])- float(stat_acc)
+										print str(list_acc[cut]) + ' ' + str(stat_acc)		# problem here is that stat_acc > list_acc for SR4 - how to handle this??
 										sigma_lim_obs_stat = N_obs/(lumi * eff * float(var_acc))
 										f_est_obs_stat = f_gen * pow(sigma_lim_obs_stat/sigma_gen,0.25)
 

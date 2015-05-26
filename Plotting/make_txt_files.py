@@ -27,6 +27,7 @@ with open(limFile) as f:
 
 # creates empty dictionaries. sigma_by_name will be filled by 'name : sigma_obs', where sigma_obs is the lowest of the four values of sigma_obs from four signal regions, when name does not include a systematic variance (eg 'SVD_10_200_min'). If it does (ie 'SVD_10_200_min_scale_up'), the value is instead the sigma_obs in the SR that is found to give the best value for the nominal name (SVD_10_200_min). For example, if SVD_10_200_min has the best limit in SR2, SVD_10_200_min_scale_up will extract the limit in SR2 regardless of whether this is the best limit (though usually it should match up). SR_by_name just stores the SR for each nominal value.
 sigma_by_name = {}
+coupling_by_name = {}
 SR_by_name = {}
 stat_sigma = {}
 
@@ -56,6 +57,7 @@ for i,chunk in enumerate(chunks):
 				# compare with min_sigma, fill min_sigma if smaller. Also store j which refers to the appropriate signal region (j=1 -> SR1, for eg).
                         	if (float(info[5]) < min_sigma):
                                 	min_sigma = float(info[5])
+					min_couple = float(info[7])
 					j_min = j
 					sigma_stat = float(info[9])
 				
@@ -68,6 +70,7 @@ for i,chunk in enumerate(chunks):
                 	sigma_by_name[name] = str(min_sigma)
 			SR_by_name[name] = str(j_min)
 			stat_sigma[name] = str(sigma_stat)
+			coupling_by_name[name] = str(min_couple)
 
 		#print 'sigma_by_name[' + name + ']: ' + sigma_by_name[name]
 
@@ -100,6 +103,10 @@ for modelType in masspoints_2.model:
 				print 'final total_err_sq = ' + str(total_err_sq)
 				print total_err
 				err_by_name[base] = total_err
+				# also, create a text file with the coupling limit as a function of med + DM masses. A different one for each model + width.
+				flim_out = storeDir + "couplinglimits_" + modelType + "_" + iW + ".txt"
+				with open(flim_out, "a") as f:
+					f.write(str(iM) + " " + str(iMe) + " " + str(coupling_by_name[base]) + "\n")
 						
 
 for modelType in masspoints_2.model:
