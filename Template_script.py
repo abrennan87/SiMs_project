@@ -86,8 +86,12 @@ if masspoints.MadGraph == 1:
 	os.system("sed -i 's/M_med/MMED_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
 	os.system("sed -i 's/M_DM/MDM_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
 	if 'MODELTYPE' == 'TSD':
-		os.system("sed -i 's/W_etaU/WIDTH_U_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
 		os.system("sed -i 's/W_etaD/WIDTH_D_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
+		os.system("sed -i 's/W_etaU/WIDTH_U_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
+                os.system("sed -i 's/W_etaS/WIDTH_S_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
+                os.system("sed -i 's/W_etaC/WIDTH_C_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
+                os.system("sed -i 's/W_etaB/WIDTH_B_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
+                os.system("sed -i 's/W_etaT/WIDTH_T_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
 	else:
 		os.system("sed -i 's/W_xi/WIDTH_num/g' " + mgModelTemTmp + "Cards/param_card.dat")
 	# No need to store these param_cards (which are copied over each new run), as they are copied in the output LHE file. 
@@ -205,7 +209,7 @@ if masspoints.MadGraph == 1:
 
 	with open(track_script, "a") as f:
 		f.write("Removing " + tmpdir + "...")
-	os.system("rm -r " + tmpdir)
+	#os.system("rm -r " + tmpdir)
 
 	if not os.path.exists(tmpdir):
 		with open(track_script, "a") as f:
@@ -247,7 +251,8 @@ if masspoints.Pythia == 1:
 	os.system("sed -i 's/path/" + mgPath_adapted + "/g' " + pythiaScript)
 
 	# Check the makefile, if not here, then add to list:
-	if not main_name in open(pythiaDir + "Makefile").read():
+	main_name_space = main_name + ' '		# Needed to ensure it doesn't find the main_name embedded in a main_name_syst, as this won't run.
+	if not main_name_space in open(pythiaDir + "Makefile").read():
 	        os.system("sed -i 's/main_SiMs /main_SiMs " + main_name + " /g' " + pythiaDir + "Makefile")
 
 	# Check the default values are set correctly
