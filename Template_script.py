@@ -6,9 +6,14 @@ import datetime
 import time
 import sys
 sys.path.append('/home/ameliajb/workarea/SiMs_AtlasExternal_v2/')
-import masspoints
 
 qcut_num = MDM_num/4
+channel = 'CHANNEL'
+runMG = RUNMG
+runPythia = RUNPYTHIA
+runCon = RUNCON
+runCF = RUNCF
+runSysts = RUNSYSTS
 
 
 #dateandtime = str(datetime.datetime.now().strftime("%d%b%Y_%H.%M"))
@@ -20,16 +25,16 @@ trackStore = localDir + "tracking_scripts/"
 track_script = localDir + "track_" + outputName + ".txt"
 with open(track_script, "w") as f:
 	f.write("Reading masspoints.py...\n")
-	f.write("MadGraph = " + str(masspoints.MadGraph) + "\n")
-	f.write("Pythia = " + str(masspoints.Pythia) + "\n")
-	f.write("HepMC2root = " + str(masspoints.HepMC2root) + "\n")
-	f.write("Cutflow = " + str(masspoints.Cutflow) + "\n\n")
+	f.write("MadGraph = " + str(runMG) + "\n")
+	f.write("Pythia = " + str(runPythia) + "\n")
+	f.write("HepMC2root = " + str(runCon) + "\n")
+	f.write("Cutflow = " + str(runCF) + "\n\n")
 
-	f.write("Channel = mono" + masspoints.monoX + "\n")
+	f.write("Channel = mono" + channel + "\n")
 	f.write("qcut_num = " + str(qcut_num) + "\n\n")
 	
 	f.write("Using systematics?... ")
-	if masspoints.systematics == 1:
+	if runSysts == 1:
 		f.write("Yes.\n\n")
 	else:
 		f.write("No.\n\n")
@@ -38,16 +43,16 @@ with open(track_script, "w") as f:
 
 mgDirGen = localDir + "MG5_aMC_v2_2_2/"
 mgDirGen2 = localDir + "MG5_aMC_v2_2_2_slim/"
-if masspoints.monoX == 'Z':
+if channel == 'Z':
 	mgModelTem = mgDirGen + "SiM_MODELTYPE_monoZ_8TeV/"		# For mono-Z processes
-elif masspoints.monoX == 'jet':
+elif channel == 'jet':
 	mgModelTem = mgDirGen + "SiM_MODELTYPE_monojet_8TeV/"		# For mono-jet processes
 else:
 	sys.exit('What channel are you studying?? - abort!')
 scriptDir = os.getenv("PBS_O_WORKDIR")
 print "PBS_O_WORKDIR is " + str(scriptDir)
 
-if masspoints.MadGraph == 1:
+if runMG == 1:
 
 	# make a temp directory
 	tmp = subprocess.Popen(["mktemp -d --suffix=_ABrennan"], stdout=subprocess.PIPE, shell=True)
@@ -69,9 +74,9 @@ if masspoints.MadGraph == 1:
 
 	# define this as the base directory - note that if there are problems, or want to run locally, we can just set mgModelTemTmp to mgModelTem
 	mgDirGenTmp = tmpdir + "MG5_aMC_v2_2_2_slim/"
-	if masspoints.monoX == 'Z':
+	if channel == 'Z':
 		mgModelTemTmp = mgDirGenTmp + "SiM_MODELTYPE_monoZ_8TeV/" 		# For mono-Z processes
-	elif masspoints.monoX == 'jet':
+	elif channel == 'jet':
 		mgModelTemTmp = mgDirGenTmp + "SiM_MODELTYPE_monojet_8TeV/"		# For mono-jet processes	
 
 	with open(track_script, "a") as f:
@@ -119,12 +124,12 @@ if masspoints.MadGraph == 1:
                         f.write("\nrun_card.dat is not correct - abort!")
                 sys.exit('run_card.dat is not correct - abort!')
 
-	if masspoints.monoX == 'Z':
+	if channel == 'Z':
         	if (not '0        = ickkw' in open(mgModelTemTmp + "Cards/run_card.dat").read()):
         	       with open(track_script, "a") as f:
         	                f.write("\nickkw is turned on - abort!")
         	       sys.exit('ickkw is turned on - abort!')
-	elif masspoints.monoX == 'jet':
+	elif channel == 'jet':
 		if (not '1        = ickkw' in open(mgModelTemTmp + "Cards/run_card.dat").read()):
 			with open(track_script, "a") as f:
         	        	f.write("\nickkw is not on - abort!")
@@ -144,12 +149,12 @@ if masspoints.MadGraph == 1:
 		else:
                         print 'No "up" or "down" in outputName'
         else:
-		if masspoints.monoX == 'Z':
+		if channel == 'Z':
 			os.system("sed -i 's/XQCUT/0/g' " + mgModelTemTmp + "Cards/run_card.dat")                      
-		elif masspoints.monoX == 'jet':
+		elif channel == 'jet':
 			os.system("sed -i 's/XQCUT/" + str(qcut_num) + "/g' " + mgModelTemTmp + "Cards/run_card.dat")
 	
-	if masspoints.systematics == 1: 
+	if runSysts == 1: 
 		with open(track_script, "a") as f:
                 	f.write("Filling systematic variable in run_card.dat.\n")
 
@@ -223,9 +228,9 @@ if masspoints.MadGraph == 1:
 
 pythiaDir = localDir + "pythia8201/share/Pythia8/examples/"
 mgDirGen = localDir + "MG5_aMC_v2_2_2/"
-if masspoints.monoX == 'Z':
+if channel == 'Z':
 	mgModelTem = mgDirGen + "SiM_MODELTYPE_monoZ_8TeV/"		# For mono-Z processes
-elif masspoints.monoX == 'jet':
+elif channel == 'jet':
 	mgModelTem = mgDirGen + "SiM_MODELTYPE_monojet_8TeV/"           # For mono-jet processes
 else:
 	sys.exit('What channel are you studying?? - abort!')
@@ -234,7 +239,7 @@ main_name = "main_SiMs_" + outputName
 
 mgPath_adapted = mgPath.replace("/", "\/")
 
-if masspoints.Pythia == 1:
+if runPythia == 1:
 
 	with open(track_script, "a") as f:
                 f.write("Beginning Pythia...\n")
@@ -273,7 +278,7 @@ if masspoints.Pythia == 1:
                 sys.exit('Tune:pp is not set to 10 - abort!')
 
 	# set matching according to if monoZ or monojet - default is on, as if events are removed in mono-Z this will show up immediately
-	if masspoints.monoX == 'Z':	
+	if channel == 'Z':	
 		os.system("sed -i 's/JetMatching:merge = on/JetMatching:merge = off/g' " + pythiaScript)
 		os.system("sed -i 's/pythia.setUserHooksPtr(matching)/\/\/pythia.setUserHooksPtr(matching)/g' " + pythiaScript)
 		os.system("sed -i 's/delete matching/\/\/delete matching/g' " + pythiaScript)					# TODO should this also include setMad = on vs off??
@@ -328,7 +333,7 @@ convDir = localDir + "ConvertHepMC2root/"
 batchDir = convDir + "cxx_and_sh"	# location of automatically-created scripts after running
 batchDir2 = convDir + "output_exes"
 
-if masspoints.HepMC2root == 1:
+if runCon == 1:
 
 	with open(track_script, "a") as f:
                 f.write("Beginning HepMC2root...\n")
@@ -382,7 +387,7 @@ cutflowDir = localDir + "CutFlow/"
 batchDir = cutflowDir + "batch_scripts"       # location of automatically-created scripts after running
 outputStore = cutflowDir + "txt_outputs"	
 
-if masspoints.Cutflow == 1:
+if runCF == 1:
 
         with open(track_script, "a") as f:
                 f.write("Beginning cutflow...\n")
