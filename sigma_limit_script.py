@@ -63,9 +63,6 @@ for name in points:
 				print "Can't find LHE for " + baseName + "! Continuing..."
 				continue
 		
-			#with open(limits, "a") as f:
-       			#	f.write("\n\n" + baseName + ": ")
-
 			if os.path.exists(events_file):
 				with open(events_file) as g:
     					for line in g:
@@ -75,14 +72,8 @@ for name in points:
 							sigma_gen = float(line[i+1:])*pow(10,3)         # saving this as a float, scientific notation is handled
 							xsec = str(sigma_gen)				# store as string for printing
         	    					break						# ensures doesn't continue reading the file after this line
-        	        	#with open(limits, "a") as f:
-        	                #	f.write(" Xsec = " + xsec + ", ")
-
 				# define the dictionary entry
 				sig_gen[baseName] = sigma_gen
-        		#else:
-        	       		#with open(limits, "a") as f:
-        	        	#	f.write("can't find LHE!\n")				
 	
 			acc_file = cutflowDir + "cutflow_output_" + baseName + ".txt"
 
@@ -98,8 +89,6 @@ for name in points:
 							i = line.index('s')
 							j = len(line)
 							nevent = line[i+1:j-1]
-							#with open(limits, "a") as f:
-        	                                   	#	f.write("nevents = " + nevent)
 						for cut in ['150', '250', '350', '450']:
 							if 'MET > ' + cut in line:
 								line = line.replace(" ", "")
@@ -224,29 +213,4 @@ for sh_name in points:
 		with open(limits, "a") as f:
 			f.write("\n\n" + name + ": Xsec = " + str(sig_gen[name]))
 			f.write("\n" + line_new)
-
-											# fill dictionary entry
-											#acc_stat[baseName + cut] = str
-
-											# vary the nominal acceptance downwards, this will give a larger variation in sigma which is more conservative
-											#var_acc = abs(float(list_acc[cut])- float(stat_acc))		# inserted abs here for temp fix - NEED TO FIX THIS
-											#print str(list_acc[cut]) + ' ' + str(stat_acc)		# problem here is that stat_acc > list_acc for SR4 - how to handle this??
-											#if (float(var_acc)==0):
-											#	sigma_lim_obs_stat = 0
-											#else:
-											#	sigma_lim_obs_stat = N_obs/(lumi * eff * float(var_acc))
-											#f_est_obs_stat = f_gen * pow(sigma_lim_obs_stat/sigma_gen,0.25)
-
-											# re-write this code - store the above as a dictionary
-
-
-											# only do this once for each cut and file, so doing once the MET stat > cut line is found works well.
-											#output = ['MET > ' + cut, str(list_acc[cut]), str(round(sig_exp[cut], 2)), str(round(sig_obs[cut],2)), str(round(f_exp[cut], 4)), str(round(f_obs[cut], 4)), str(round(var_acc, 4)), str(round(sigma_lim_obs_stat, 2)), str(round(f_est_obs_stat,4))]
-											#line_new = '{:<20}  {:<20}  {:<20}  {:<20}  {:<20}  {:<20}  {:<20}  {:<20}  {:<20}'.format(output[0], output[1], output[2], output[3], output[4], output[5], output[6], output[7], output[8])
-											#with open(limits, "a") as f:
-											#	f.write("\n" + line_new)
-
-#						else:
-#                                        	        with open(limits, "a") as f:
-#                                        	                f.write("can't find cutflow output!\n") 	
 
