@@ -18,9 +18,13 @@ Block ckmblock
 ## INFORMATION FOR HIDDEN
 ###################################
 Block hidden 
-    1 gxiQ # fUD - needs to be Q and not chi so that the ratio (if different to one) doesn't fill these values with the multiplied value!  
-    2 gxiQ # fCS 
-    3 gxiQ # fTB 
+    1 gxichi # gxiDM 
+    2 gxiQ # gxiU 
+    3 gxiQ # gxiD 
+    4 gxiQ # gxiS 
+    5 gxiQ # gxiC 
+    6 gxiQ # gxiB 
+    7 gxiQ # gxiT 
 
 ###################################
 ## INFORMATION FOR MASS
@@ -29,23 +33,16 @@ Block mass
     1 5.040000e-03 # MD 
     2 2.550000e-03 # MU 
     3 1.010000e-01 # MS 
-    4 1.270000e+00 # MC 
+    4 1.420000e+00 # MC 
     5 4.700000e+00 # MB 
     6 1.720000e+02 # MT 
    11 5.110000e-04 # Me 
-   13 1.056600e-01 # MMU 
+   13 1.056600e-01 # MM 
    15 1.777000e+00 # MTA 
    23 9.118760e+01 # MZ 
-   25 1.250000e+02 # MH 
-  9000006 M_med # MEtaD 
-  9000007 M_med # MEtaU 
-  9000008 M_med # MEtaS 
-  9000009 M_med # MEtaC 
-  9000010 M_DM # MChi 
-  9000011 M_med # MEtaT 
-  9000012 M_med # MEta0 
-  9000013 M_med # MEtaP 
-  9000014 M_med # MEtaB 
+   25 1.200000e+02 # MH 
+  101 M_med # Mxi 
+  9000010 M_DM # Mchi 
 ## Dependent parameters, given by model restrictions.
 ## Those values should be edited following the 
 ## analytical expression. MG5 ignores those values 
@@ -86,15 +83,8 @@ Block yukawa
 DECAY   6 1.508336e+00 # WT 
 DECAY  23 2.495200e+00 # WZ 
 DECAY  24 2.085000e+00 # WW 
-DECAY  25 4.070000e-03 # WH 
-DECAY 9000006 W_etaD # WEtaD 
-DECAY 9000007 W_etaU # WEtaU 
-DECAY 9000008 W_etaS # WEtaS 
-DECAY 9000009 W_etaC # WEtaC 
-DECAY 9000011 W_etaT # WEtaT 
-DECAY 9000012 0 # WEta0 
-DECAY 9000013 0 # WEtaP 
-DECAY 9000014 W_etaB # WEtaB 
+DECAY  25 5.753088e-03 # WH 
+DECAY 101 W_xi # Wxi 
 ## Dependent parameters, given by model restrictions.
 ## Those values should be edited following the 
 ## analytical expression. MG5 ignores those values 
@@ -118,48 +108,13 @@ DECAY  9000010 0.000000 # chi : 0.0
 # QUANTUM NUMBERS OF NEW STATE(S) (NON SM PDG CODE)
 #===========================================================
 
-Block QNUMBERS 9000006  # etad 
-        1 -1  # 3 times electric charge
-        2 1  # number of spin states (2S+1)
-        3 3  # colour rep (1: singlet, 3: triplet, 8: octet)
-        4 1  # Particle/Antiparticle distinction (0=own anti)
-Block QNUMBERS 9000007  # etau 
-        1 2  # 3 times electric charge
-        2 1  # number of spin states (2S+1)
-        3 3  # colour rep (1: singlet, 3: triplet, 8: octet)
-        4 1  # Particle/Antiparticle distinction (0=own anti)
-Block QNUMBERS 9000008  # etas 
-        1 -1  # 3 times electric charge
-        2 1  # number of spin states (2S+1)
-        3 3  # colour rep (1: singlet, 3: triplet, 8: octet)
-        4 1  # Particle/Antiparticle distinction (0=own anti)
-Block QNUMBERS 9000009  # etac 
-        1 2  # 3 times electric charge
-        2 1  # number of spin states (2S+1)
-        3 3  # colour rep (1: singlet, 3: triplet, 8: octet)
-        4 1  # Particle/Antiparticle distinction (0=own anti)
-Block QNUMBERS 9000014  # etab 
-        1 -1  # 3 times electric charge
-        2 1  # number of spin states (2S+1)
-        3 3  # colour rep (1: singlet, 3: triplet, 8: octet)
-        4 1  # Particle/Antiparticle distinction (0=own anti)
-Block QNUMBERS 9000011  # etat 
-        1 2  # 3 times electric charge
-        2 1  # number of spin states (2S+1)
-        3 3  # colour rep (1: singlet, 3: triplet, 8: octet)
-        4 1  # Particle/Antiparticle distinction (0=own anti)
-Block QNUMBERS 9000012  # eta0 
-        1 0  # 3 times electric charge
-        2 1  # number of spin states (2S+1)
-        3 1  # colour rep (1: singlet, 3: triplet, 8: octet)
-        4 1  # Particle/Antiparticle distinction (0=own anti)
-Block QNUMBERS 9000013  # etap 
-        1 3  # 3 times electric charge
-        2 1  # number of spin states (2S+1)
-        3 1  # colour rep (1: singlet, 3: triplet, 8: octet)
-        4 1  # Particle/Antiparticle distinction (0=own anti)
 Block QNUMBERS 9000010  # chi 
         1 0  # 3 times electric charge
         2 2  # number of spin states (2S+1)
         3 1  # colour rep (1: singlet, 3: triplet, 8: octet)
         4 1  # Particle/Antiparticle distinction (0=own anti)
+Block QNUMBERS 101  # xi 
+        1 0  # 3 times electric charge
+        2 3  # number of spin states (2S+1)
+        3 1  # colour rep (1: singlet, 3: triplet, 8: octet)
+        4 0  # Particle/Antiparticle distinction (0=own anti)
