@@ -183,26 +183,30 @@ int main(int argc, char *argv[]){
 	      el_count+=1;
 	      //cout << "electron pT is " << (particles[p].pt())/1000. << endl;
 	      // smearing the ET and PT of electrons. Taking values on ET smearing from fig 351 of 1407.5063. Applying the same values to pT for now.
-	      random_device rd;
-              mt19937 e2(rd());                                                           // random generator
-	      normal_distribution<> dist_el_low(0,0.04);
-              normal_distribution<> dist_el_med(0, 0.027);
-              normal_distribution<> dist_el_high(0, 0.015);
-              float smear_factor_el;
-              if (particles[p].Et() < 20000) {smear_factor_el = 1. + dist_el_low(e2);}
-              else if (20000 < particles[p].Et() < 60000) {smear_factor_el = 1. + dist_el_med(e2);}
-              else {smear_factor_el = 1. + dist_el_high(e2);}                                        // take from normal distribution with mean 0, standard dev = uncertainty on el/gamma resolution = 4% (ET < 20) / 2.7% (ET < 60) / 1.5% (ET > 60) 
-              float el_pT_unsmeared = particles[p].pt();
-              float el_pT_smeared = el_pT_unsmeared*smear_factor_el;                               // apply smearing
-	      float el_ET_unsmeared = particles[p].Et();				// don't think this will work - might need to calculate Et from E and phi/theta/eta
-	      float el_ET_smeared = el_ET_unsmeared*smear_factor_el;
-              el_pt_v.push_back( el_pT_smeared );
+	      //random_device rd;
+              //mt19937 e2(rd());                                                           // random generator
+	      //normal_distribution<> dist_el_low(0,0.01);
+              //normal_distribution<> dist_el_med(0, 0.01);
+              //normal_distribution<> dist_el_high(0, 0.01);
+	      std::default_random_engine e4;
+	      std::default_random_engine e8;
+	      std::normal_distribution<double> dist_el(0, 0.01);
+              float smear_factor_el = dist_el(e4) + 1.;
+	      float smear_factor_el_ET = dist_el(e8) + 1.;
+              //if (particles[p].Et() < 20000) {smear_factor_el = 1. + dist_el_low(e2);}
+              //else if (20000 < particles[p].Et() < 60000) {smear_factor_el = 1. + dist_el_med(e2);}
+              //else {smear_factor_el = 1. + dist_el_high(e2);}                                        // take from normal distribution with mean 0, standard dev = uncertainty on el/gamma resolution = 4% (ET < 20) / 2.7% (ET < 60) / 1.5% (ET > 60) 
+              //float el_pT_unsmeared = particles[p].pt();
+              //float el_pT_smeared = el_pT_unsmeared*smear_factor_el;                               // apply smearing
+	      //float el_ET_unsmeared = particles[p].Et();				// don't think this will work - might need to calculate Et from E and phi/theta/eta
+	      //float el_ET_smeared = el_ET_unsmeared*smear_factor_el;
+              el_pt_v.push_back( particles[p].pt() * smear_factor_el );
               el_px_v.push_back( particles[p].px() );
               el_py_v.push_back( particles[p].py() );
               el_pz_v.push_back( particles[p].pz() );
               el_m_v.push_back( particles[p].m() );                                   
               el_E_v.push_back( particles[p].E() );
-	      el_Et_v.push_back( el_ET_smeared );
+	      el_Et_v.push_back( particles[p].Et()*smear_factor_el_ET );
               el_eta_v.push_back( particles[p].eta() );
               el_phi_v.push_back( particles[p].phi() );
 	      if (mc_pdgID_v.at( p ) == 11) el_charge_v.push_back( -1. );        // electrons
@@ -213,13 +217,14 @@ int main(int argc, char *argv[]){
 	    if (this_PID == 13){
               mu_count+=1;
 	      //cout << "muon pT is " << (particles[p].pt())/1000. << endl;
-	      random_device rd;
-              mt19937 e2(rd());                                                           // random generator
-              normal_distribution<> dist_mu(0, 0.04);                                        // take from normal distribution with mean 0, standard dev = uncertainty on muon resolution = 4% (conservative)
-              float smear_factor_mu = 1. + dist_mu(e2);
-              float mu_pT_unsmeared = particles[p].pt();
-              float mu_pT_smeared = mu_pT_unsmeared*smear_factor_mu;                               // apply smearing
-              mu_pt_v.push_back( mu_pT_smeared );
+	      //random_device rd;
+              //mt19937 e2(rd());                                                           // random generator
+              std::default_random_engine e5;
+              std::normal_distribution<> dist_mu(0, 0.008);                                        // take from normal distribution with mean 0, standard dev = uncertainty on muon resolution = 4% (conservative)
+              float smear_factor_mu = 1. + dist_mu(e5);
+              //float mu_pT_unsmeared = particles[p].pt();
+              //float mu_pT_smeared = mu_pT_unsmeared*smear_factor_mu;                               // apply smearing
+              mu_pt_v.push_back( particles[p].pt()*smear_factor_mu );
               mu_px_v.push_back( particles[p].px() );
               mu_py_v.push_back( particles[p].py() );
               mu_pz_v.push_back( particles[p].pz() );
@@ -287,17 +292,18 @@ int main(int argc, char *argv[]){
 
 	  jet_AntiKt4_n = jets_antiKt.size();
           for ( int j = 0; j < jet_AntiKt4_n; j++ ) {                                   // Final-state antiKt jets
-            random_device rd;
-            mt19937 e2(rd());                                                           // random generator
-            normal_distribution<> dist(0, 0.05);                                        // take from normal distribution with mean 0, standard dev = uncertainty on jet resolution = 5% (conservative)
+            //random_device rd;
+            //mt19937 e2(rd());                                                           // random generator
+            std::default_random_engine e2;
+            std::normal_distribution<double> dist(0, 0.05);                                        // take from normal distribution with mean 0, standard dev = uncertainty on jet resolution = 5% (conservative)
             float smear_factor = 1. + dist(e2);
             //cout << "e2: " << e2 << endl;
             //cout << "smear_factor: " << smear_factor << endl;
-            float pT_unsmeared = jets_antiKt[j].perp();
-            float pT_smeared = pT_unsmeared*smear_factor;                               // apply smearing
+            //float pT_unsmeared = jets_antiKt[j].perp();
+            //float pT_smeared = pT_unsmeared*smear_factor;                               // apply smearing
             //cout << "pT_unsmeared: " << pT_unsmeared << endl;
             //cout << "pT_smeared: " << pT_smeared << endl;
-            jet_AntiKt4_pt_v.push_back( pT_smeared );                                   // fill jet pt vector with smeared values
+            jet_AntiKt4_pt_v.push_back( jets_antiKt[j].perp()*smear_factor );                                   // fill jet pt vector with smeared values
             jet_AntiKt4_E_v.push_back( jets_antiKt[j].E() );
             jet_AntiKt4_eta_v.push_back( jets_antiKt[j].eta() );
             jet_AntiKt4_phi_v.push_back( jets_antiKt[j].phi() );
@@ -308,22 +314,24 @@ int main(int argc, char *argv[]){
 	  int num_filt_jets = 0;
 	  for ( int k = 0; k < jet_fat_n; k++ ) {					// Final-state CA jets
 	    // apply smearing
-	    random_device rd;
-            mt19937 e2(rd());                                                           // random generator
-	    mt19937 e3(rd());								// second random value for smearing mass - is e3 ok? 
-            normal_distribution<> dist(0, 0.05);						// picked 5% smearing on jet mass and pT, both should be checked. See 1306.4945.
-	    float smear_factor_pt = 1. + dist(e2);
-	    float smear_factor_m = 1. + dist(e3);
-	    float fj_pT_unsmeared = jets_CA[k].perp();
-	    float fj_pT_smeared = fj_pT_unsmeared * smear_factor_pt;
-	    float fj_m_unsmeared = jets_CA[k].m();
-	    float fj_m_smeared = fj_m_unsmeared * smear_factor_m;
+	    //random_device rd;
+            //mt19937 e2(rd());                                                           // random generator
+	    //mt19937 e3(rd());								// second random value for smearing mass - is e3 ok? 
+	    std::default_random_engine e3;
+	    std::default_random_engine e7;
+            std::normal_distribution<double> dist(0, 0.05);						// picked 5% smearing on jet mass and pT, both should be checked. See 1306.4945.
+	    float smear_factor_pt = 1. + dist(e3);
+	    float smear_factor_m = 1. + dist(e7);
+	    //float fj_pT_unsmeared = jets_CA[k].perp();
+	    //float fj_pT_smeared = fj_pT_unsmeared * smear_factor_pt;
+	    //float fj_m_unsmeared = jets_CA[k].m();
+	    //float fj_m_smeared = fj_m_unsmeared * smear_factor_m;
 	    // Fill the vector of fat jets before filtering applied
-	    jet_fat_pt_v.push_back( fj_pT_smeared ); 
+	    jet_fat_pt_v.push_back( jets_CA[k].perp() * smear_factor_pt ); 
             jet_fat_E_v.push_back( jets_CA[k].E() );
             jet_fat_eta_v.push_back( jets_CA[k].eta() );
             jet_fat_phi_v.push_back( jets_CA[k].phi() );
-            jet_fat_m_v.push_back( fj_m_smeared );
+            jet_fat_m_v.push_back( jets_CA[k].m()*smear_factor_m );
 
 	    // Apply mass-drop tagging
 	    fastjet::PseudoJet tagged_jet = tagger(jets_CA[k]);				// Checks all input CA jets for passing mu, y_cut values, tags 0 if fails
