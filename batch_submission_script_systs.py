@@ -44,6 +44,9 @@ import math
 # start loop, define string, number names
 
 homeDir = "/home/ameliajb/workarea/SiMs_AtlasExternal_v2/"
+width_check_fl = homeDir + "width_check.txt"
+with open(width_check_fl, "w") as f:
+	f.write("This text file is created automatically each time batch_submission_script_systs.py is run, it stores the basenames of any models where the mediator width is approaching the mass.\n\n")
 
 pi = 3.1415
 m_d = 0.0048
@@ -69,6 +72,8 @@ for modelType in masspoints.model:
 				st_g_DM = str(g_DM)
 				print "st_g_SM: " + st_g_SM
 				print "st_g_DM: " + st_g_DM
+				#print "g_SM_2: " + str(g_SM_2)
+				#print "g_DM_2: " + str(g_DM_2)
                 		for iW in masspoints.widths:
 					print 'iW is ' + iW
                         		if iW == 'M3':
@@ -101,7 +106,7 @@ for modelType in masspoints.model:
 							if (fiMe >= 2*m_b):
                                 	                        b_piece = 3*fiMe*g_SM_2/(8*pi)*pow((1-4*pow(m_b,2)/(pow(fiMe,2))),1.5);
                                 	                        number_width += b_piece;
-							print 'width is calculated to be: ' + str(number_width)
+							#print 'width is calculated to be: ' + str(number_width)
 						elif modelType == 'SVD':
 							number_width = 0.
 							if (fiMe >= 2*fiM):
@@ -125,14 +130,41 @@ for modelType in masspoints.model:
 							if (fiMe >= 2*m_b):
 								b_piece = 3*fiMe*g_SM_2/(12*pi)*(1+2*pow(m_b,2)/(pow(fiMe,2)))*pow((1-4*pow(m_b,2)/(pow(fiMe,2))),0.5)
                                 	                        number_width += b_piece
-							print 'width is calculated to be: ' + str(number_width)
-						elif modelType == 'TSD':			# Going to have to fix this! If we are changing the TSD model to have different mediators.
+							#print 'width is calculated to be: ' + str(number_width)
+						elif modelType == 'SAD':
+                                                        number_width = 0.
+                                                        if (fiMe >= 2*fiM):
+                                                                DM_piece = fiMe*g_DM_2/(12*pi)*pow((1-4*pow(fiM,2)/(pow(fiMe,2))),1.5)
+                                                                number_width += DM_piece
+                                                        if (fiMe >= 2*m_u):
+                                                                u_piece = 3*fiMe*g_SM_2/(12*pi)*pow((1-4*pow(m_u,2)/(pow(fiMe,2))),1.5)
+                                                                number_width += u_piece
+                                                        if (fiMe >= 2*m_d):
+                                                                d_piece = 3*fiMe*g_SM_2/(12*pi)*pow((1-4*pow(m_d,2)/(pow(fiMe,2))),1.5)
+                                                                number_width += d_piece
+                                                        if (fiMe >= 2*m_c):
+                                                                c_piece = 3*fiMe*g_SM_2/(12*pi)*pow((1-4*pow(m_c,2)/(pow(fiMe,2))),1.5)
+                                                                number_width += c_piece
+                                                        if (fiMe >= 2*m_s):
+                                                                s_piece = 3*fiMe*g_SM_2/(12*pi)*pow((1-4*pow(m_s,2)/(pow(fiMe,2))),1.5)
+                                                                number_width += s_piece
+                                                        if (fiMe >= 2*m_t):
+                                                                t_piece = 3*fiMe*g_SM_2/(12*pi)*pow((1-4*pow(m_t,2)/(pow(fiMe,2))),1.5)
+                                                                number_width += t_piece
+                                                        if (fiMe >= 2*m_b):
+                                                                b_piece = 3*fiMe*g_SM_2/(12*pi)*pow((1-4*pow(m_b,2)/(pow(fiMe,2))),1.5)
+                                                                number_width += b_piece
+						elif modelType == 'TSD':
 							number_width_D = 0.
 							number_width_U = 0.
 							number_width_S = 0.
                                                         number_width_C = 0.
 							number_width_B = 0.
                                                         number_width_T = 0.
+							print 'pow(fiM,2) + pow(m_u,2): ', str(pow(fiM,2) + pow(m_u,2)), '\n'
+							print 'pow(fiMe,2): ' , str(pow(fiMe,2)), '\n'
+							print 'pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2): ', str(pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2)), '\n'
+							print '4*pow(fiM,2)/pow(fiMe,2): ', str(4*pow(fiM,2)/pow(fiMe,2)), '\n'
 							if ((pow(fiM,2) + pow(m_u,2) <= pow(fiMe,2)) and (pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2) >= 4*pow(fiM,2)/pow(fiMe,2))):
 								u_piece = fiMe*g_SM_2/(16*pi)*(1-pow(m_u,2)/pow(fiMe,2) - pow(fiM,2)/pow(fiMe,2))*pow((pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2) - 4*pow(fiM,2)/pow(fiMe,2)),0.5)
 								number_width_U += u_piece
@@ -161,23 +193,67 @@ for modelType in masspoints.model:
 							number_width = 1.
                                 	        	print 'Warning - using NWA (width = 1)'
 	
+					# for each sample, define a variable that is false unless set to true when the width is large compared to the mediator mass
+					width_prob = "FALSE"
+					width_prob_bad = "FALSE"
 
 					if (modelType == 'TSD' and iW == 'min'):
-						width_D = "{0:.2f}".format(number_width_D)
-						width_U = "{0:.2f}".format(number_width_U)
-                                                width_S = "{0:.2f}".format(number_width_S)
-                                                width_C = "{0:.2f}".format(number_width_C)
-                                                width_B = "{0:.2f}".format(number_width_B)
-                                                width_T = "{0:.2f}".format(number_width_T)
+						width_D = "{0:.4f}".format(number_width_D)
+						width_U = "{0:.4f}".format(number_width_U)
+                                                width_S = "{0:.4f}".format(number_width_S)
+                                                width_C = "{0:.4f}".format(number_width_C)
+                                                width_B = "{0:.4f}".format(number_width_B)
+                                                width_T = "{0:.4f}".format(number_width_T)
 						print 'width_D is ' + width_D
 						print 'width_U is ' + width_U
                                                 print 'width_S is ' + width_S
                                                 print 'width_C is ' + width_C
                                                 print 'width_B is ' + width_B
                                                 print 'width_T is ' + width_T
+						if (number_width_D > fiMe*0.8):
+							width_prob_bad = "TRUE"
+                                                        print 'Uh oh - width (D) is greater than 80% of mediator mass! :( :( :( :( :( :( :( :( :( :( :( :( :('
+                                                elif (number_width_D > fiMe / 2):
+							width_prob = "TRUE"
+                                                        print 'Warning - width (D) is greater than 50% of mediator mass.'
+                                                if (number_width_U > fiMe*0.8):
+                                                        width_prob_bad = "TRUE"
+                                                        print 'Uh oh - width (U) is greater than 80% of mediator mass! :( :( :( :( :( :( :( :( :( :( :( :( :('
+                                                elif (number_width_U > fiMe / 2):
+                                                        width_prob = "TRUE"
+                                                        print 'Warning - width (U) is greater than 50% of mediator mass.'
+                                                if (number_width_S > fiMe*0.8):
+                                                	width_prob_bad = "TRUE"
+                                                        print 'Uh oh - width (S) is greater than 80% of mediator mass! :( :( :( :( :( :( :( :( :( :( :( :( :('
+                                                elif (number_width_S > fiMe / 2):
+                                                        width_prob = "TRUE"
+                                                        print 'Warning - width (S) is greater than 50% of mediator mass.'
+                                                if (number_width_C > fiMe*0.8):
+                                                	width_prob_bad = "TRUE"
+                                                        print 'Uh oh - width (C) is greater than 80% of mediator mass! :( :( :( :( :( :( :( :( :( :( :( :( :('
+                                                elif (number_width_C > fiMe / 2):
+                                                        width_prob = "TRUE"
+                                                        print 'Warning - width (C) is greater than 50% of mediator mass.'
+                                                if (number_width_B > fiMe*0.8):
+                                                	width_prob_bad = "TRUE"
+                                                        print 'Uh oh - width (B) is greater than 80% of mediator mass! :( :( :( :( :( :( :( :( :( :( :( :( :('
+                                                elif (number_width_B > fiMe / 2):
+                                                        width_prob = "TRUE"
+                                                        print 'Warning - width (B) is greater than 50% of mediator mass.'
+                                                if (number_width_T > fiMe*0.8):
+                                                        print 'Uh oh - width (T) is greater than 80% of mediator mass! :( :( :( :( :( :( :( :( :( :( :( :( :('
+                                                elif (number_width_T > fiMe / 2):
+                                                        width_prob = "TRUE"
+                                                        print 'Warning - width (T) is greater than 50% of mediator mass.'
 					else:
 						width = "{0:.2f}".format(number_width)
 						print 'width is ' + width
+						if (number_width > fiMe*0.8):
+                                                        width_prob_bad = "TRUE"
+							print 'Uh oh - width is greater than 80% of mediator mass! :( :( :( :( :( :( :( :( :( :( :( :( :('
+						elif (number_width > fiMe / 2):
+                                                        width_prob = "TRUE"
+							print 'Warning - width is greater than 50% of mediator mass.'
 	
 					if masspoints.systematics == 0:
 						num_scripts = 1
@@ -243,12 +319,20 @@ for modelType in masspoints.model:
 						else:
                         	        		os.system("sed -i 's/WIDTH_num/" + width + "/g' " + homeDir + scriptName)
 
+						# print width check to file, if width has potential problem
+						if (width_prob == "TRUE"):
+							with open(width_check_fl, "a") as f:
+								f.write(baseName + ": Warning - width is greater than 50% of mediator mass.\n")
+						if (width_prob_bad == "TRUE"):
+                                                        with open(width_check_fl, "a") as f:
+                                                                f.write(baseName + ": Uh oh - width is greater than 80% of mediator mass! :(\n")
+
 						########################  Submit job  ########################
 	
 						scrDir = "." #directory where your run script is
         		                	logDir = "./logFiles/"  #directory for log files
         	        	        	script = scriptName #name of the script to submit
-        	                		jobName = "MCGenJob" #"RecoJob"; #"EvGenJob"; #job name to appear on the queue and log files
+        	                		jobName = "MCGenJob_" + baseName #"RecoJob"; #"EvGenJob"; #job name to appear on the queue and log files
 
 	        	                	# selection of queue
         		                	#queue = "mel_short"
@@ -263,3 +347,5 @@ for modelType in masspoints.model:
 
 					 	#time.sleep(2.7)	# ~3 seconds between each job submission as a precaution against running two similar instances of MadGraph simultaneously	
 						x = x + 1
+
+print "Check " + width_check_fl + " for width problems before continuing!"
