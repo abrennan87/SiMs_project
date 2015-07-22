@@ -11,7 +11,9 @@ import masspoints_2
 localDir = "/home/ameliajb/workarea/SiMs_AtlasExternal_v2/"
 MGdir = localDir + "MG5_aMC_v2_2_2/"
 #limFile = localDir + "limits_store_SVD_Wmin.txt"
-limFile = localDir + "limits_store_testing.txt"
+#limFile = localDir + "limits_store_testing.txt"
+limFile = localDir + "limits_store_SVD_final.txt"
+#limFile = localDir + "limits_store_TSD_final.txt"
 storeDir = localDir + "Plotting/text_graphs/"
 
 # loop through the limits_store file, break into chunks separated by the double line space. Each chunk has the form:
@@ -27,6 +29,7 @@ sig_exp = {}
 sig_exp_unc = {}
 sig_obs = {}
 sig_obs_unc = {}
+f_obs_nom = {}
 f_exp_95 = {}
 f_obs_95 = {}
 
@@ -44,31 +47,42 @@ for i,chunk in enumerate(chunks):
                 for row in chunk.split('\n')[1:]:               # skip the first line of the chunk
                         info = row.split()
 			sig_exp[name] = float(info[1])
+			print 'sig_exp[' + name + '] = ' + str(sig_exp[name])
 			sig_exp_unc[name] = float(info[2])
 			sig_obs[name] = float(info[4])
 			sig_obs_unc[name] = float(info[5])
 			f_exp_95[name] = float(info[9])
-			f_obs_95[name] = float(info[12])
+			f_obs_nom[name] = float(info[10])
+			f_obs_95[name] = float(info[13])
 
 # For each base name, create and fill text files with the graph values.
 for modelType in masspoints_2.model:
-        for iM in masspoints_2.Mdm:
-
-		for iMe in masspoints_2.Mmed:
-                        for iW in masspoints_2.widths:
-                                for ratio in masspoints_2.coupling_ratio:
-                                        rat_st = str(ratio).replace('.', '')
-                                        base = modelType + '_' + iM + '_' + iMe + '_' + iW + '_rat' + rat_st
+	for iW in masspoints_2.widths:
+		for ratio in masspoints_2.coupling_ratio:
+			rat_st = str(ratio).replace('.', '')
+			# create a text file with the coupling limit as a function of med + DM masses. A different one for each model + width.
+			flim_out = storeDir + "couplinglimits_" + modelType + "_" + iW + "_rat" + rat_st + ".txt"
+			flim_out_nom = storeDir + "couplinglimits_" + modelType + "_" + iW + "_rat" + rat_st + "_nom.txt"
+			if os.path.isfile(flim_out):
+                        	os.system("rm " + flim_out)
+			if os.path.isfile(flim_out_nom):
+				os.system("rm " + flim_out_nom)
+			for iM in masspoints_2.Mdm:
+				for iMe in masspoints_2.Mmed:
+					base = modelType + '_' + iM + '_' + iMe + '_' + iW + '_rat' + rat_st
                                         # check if this set of variables is meant to be included or now - check if exists in MG output
                                         events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + base + "/unweighted_events.lhe"
                                         if not os.path.isfile(events_file):
-                                                continue 
-                                        # create a text file with the coupling limit as a function of med + DM masses. A different one for each model + width.
-                                        flim_out = storeDir + "couplinglimits_" + modelType + "_" + iW + "_rat" + rat_st + ".txt"
+                                                continue
+					# some samples don't have limits as the uncertainty on acceptance was greater than the acceptance and I wasn't sure how to deal with this. Only a few samples, so ignore for now.
+					if base not in f_obs_95:
+						continue
                                         with open(flim_out, "a") as f:
                                                 f.write(str(iM) + " " + str(iMe) + " " + str(f_obs_95[base]) + "\n")
+					with open(flim_out_nom, "a") as g:
+                                                g.write(str(iM) + " " + str(iMe) + " " + str(f_obs_nom[base]) + "\n")
 
-                for iW in masspoints_2.widths:
+		for iM in masspoints_2.Mdm:
 			for ratio in masspoints_2.coupling_ratio:
                         	rat_st = str(ratio).replace('.', '')
                         	output_exp = storeDir + "limits_" + modelType + "_DM" + iM + "_" + iW + "_rat" + rat_st + "_exp.txt"
@@ -85,13 +99,14 @@ for modelType in masspoints_2.model:
                                         events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + base + "/unweighted_events.lhe"
                                         if not os.path.isfile(events_file):
                                                 continue
+					if base not in f_obs_95:
+                                                continue
                         	        with open(output_exp, "a") as g:
                         	                g.write(str(iMe) + " " + str(sig_exp[base]) + " 0 " + str(sig_exp_unc[base]) + "\n")
 					with open(output_obs, "a") as h:
                                                 h.write(str(iMe) + " " + str(sig_obs[base]) + " 0 " + str(sig_obs_unc[base]) + "\n")
 
-	for iMe in masspoints_2.Mmed:
-		for iW in masspoints_2.widths:
+		for iMe in masspoints_2.Mmed:
 			for ratio in masspoints_2.coupling_ratio:
                                 rat_st = str(ratio).replace('.', '')
 				output_exp = storeDir + "limits_" + modelType + "_Med" + iMe + "_" + iW + "_rat" + rat_st + "_exp.txt"
@@ -106,6 +121,8 @@ for modelType in masspoints_2.model:
 					# check if this set of variables is meant to be included or now - check if exists in MG output
                                         events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + base + "/unweighted_events.lhe"
                                         if not os.path.isfile(events_file):
+                                                continue
+					if base not in f_obs_95:
                                                 continue
                         	        # find the dictionary entry for width
                         	        with open(output_exp, "a") as g:
