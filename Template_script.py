@@ -62,6 +62,7 @@ if runMG == 1:
 	node = subprocess.Popen(["hostname"], stdout=subprocess.PIPE, shell=True)
 	(hostnode, err) = node.communicate()
 	with open(track_script, "a") as f:
+		f.write("Current time: " + str(datetime.datetime.now().strftime("%d%b%Y_%H.%M")) + "\n")
                 f.write("Temp directory is " + tmpdir + ", on the node " + hostnode + "\n")
 		f.write("Copying MadGraph and LHAPDF directories to temp folder... ")
 
@@ -152,7 +153,8 @@ if runMG == 1:
 		if channel == 'Z':
 			os.system("sed -i 's/XQCUT/0/g' " + mgModelTemTmp + "Cards/run_card.dat")                      
 		elif channel == 'jet':
-			os.system("sed -i 's/XQCUT/" + str(qcut_num) + "/g' " + mgModelTemTmp + "Cards/run_card.dat")
+			#os.system("sed -i 's/XQCUT/" + str(qcut_num) + "/g' " + mgModelTemTmp + "Cards/run_card.dat")
+			os.system("sed -i 's/XQCUT/80/g' " + mgModelTemTmp + "Cards/run_card.dat")
 	
 	if runSysts == 1: 
 		with open(track_script, "a") as f:
@@ -175,7 +177,7 @@ if runMG == 1:
                 	os.system("sed -i 's/21000/10042/g' " + mgModelTemTmp + "Cards/run_card.dat")     # This is cteq6l1
 		else:
                         print 'No "up" or "down" in outputName'
-
+	
 	# Run MG with an appropriate run name
 	cmd = "cd " + mgModelTemTmp
 	cmd += "; unset PBS_O_WORKDIR"
@@ -183,7 +185,8 @@ if runMG == 1:
 	cmd += "; export LHAPDF_DATA_PATH=" + tmpdir + "LHAPDF_all/share/LHAPDF/PDFsets"
 	cmd += "; echo $LHAPDF_DATA_PATH"
 	#cmd += "; export LHAPDF_DATA_PATH=" + localDir + "LHAPDF_all/share/LHAPDF/PDFsets"
-	cmd += "; ./bin/generate_events 2 0 " + outputName					# changed from 0 to '2 0' as 2 is multicore (with 0 = maximum cores), 0 is single_machine. See bin/generate_events (old input section).
+	#cmd += "; ./bin/generate_events 2 6 " + outputName					# changed from 0 to '2 0' as 2 is multicore (with 0 = maximum cores), 0 is single_machine. See bin/generate_events (old input section).
+	cmd += "; ./bin/generate_events 0 " + outputName
 	cmd += "; wait"
 	cmd += "; cd Events/" + outputName
 	cmd += "; gunzip -f unweighted_events.lhe.gz"
@@ -199,7 +202,7 @@ if runMG == 1:
 
 	with open(track_script, "a") as f:
                 f.write("done.\n")
-		f.write("Attempting to copy over results to local UI...")
+		f.write("Attempting to copy over results to local UI... ")
 
 	# copy from the tmp folder the output into here 
 	os.system("cp -r " + mgModelTemTmp + "Events/" + outputName + "/ " + mgModelTem + "Events/")
@@ -207,14 +210,14 @@ if runMG == 1:
 
 	if os.path.exists(mgModelTem + "Events/" + outputName + "/unweighted_events.lhe"):
 		with open(track_script, "a") as f:
-			f.write("done. The LHE file should now be accessible.\n")
+			f.write("done. The LHE file should now be accessible.\n Current time is" + str(datetime.datetime.now().strftime("%d%b%Y_%H.%M")) + "\n")
 	else:
 		with open(track_script, "a") as f:
                         f.write("There was a problem copying the results over!\n\n")
 
 	with open(track_script, "a") as f:
 		f.write("Removing " + tmpdir + "...")
-	#os.system("rm -r " + tmpdir)
+	os.system("rm -r " + tmpdir)
 
 	if not os.path.exists(tmpdir):
 		with open(track_script, "a") as f:
@@ -380,6 +383,11 @@ if runCon == 1:
                 f.write("done.\n")
                 f.write("The relevant output_XXX folder should now be in ConvertHepMC2root/ folder.\n")
 		f.write("HepMC2oot step is complete.\n\n")
+
+	if os.path.exists(convDir + "rootFiles/OUTPUT_" + outputName + ".root"):
+		os.system("rm " + pythiaDir + "HepMC_out/BASENAME.dat")
+	else:
+		f.write("Problem with this step! HepMC file has not been deleted.\n\n")
 
 ###############################      Running cutflow script      ################################
 

@@ -56,6 +56,9 @@ m_c = 1.275
 m_b = 4.18
 m_t = 176.7
 
+iC = str(masspoints.couplings[0]).replace(".", "")
+print "coupling is " + iC
+
 for modelType in masspoints.model:
 	for iM in masspoints.Mdm:
         	fiM = float(iM)
@@ -161,10 +164,10 @@ for modelType in masspoints.model:
                                                         number_width_C = 0.
 							number_width_B = 0.
                                                         number_width_T = 0.
-							print 'pow(fiM,2) + pow(m_u,2): ', str(pow(fiM,2) + pow(m_u,2)), '\n'
-							print 'pow(fiMe,2): ' , str(pow(fiMe,2)), '\n'
-							print 'pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2): ', str(pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2)), '\n'
-							print '4*pow(fiM,2)/pow(fiMe,2): ', str(4*pow(fiM,2)/pow(fiMe,2)), '\n'
+							#print 'pow(fiM,2) + pow(m_u,2): ', str(pow(fiM,2) + pow(m_u,2)), '\n'
+							#print 'pow(fiMe,2): ' , str(pow(fiMe,2)), '\n'
+							#print 'pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2): ', str(pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2)), '\n'
+							#print '4*pow(fiM,2)/pow(fiMe,2): ', str(4*pow(fiM,2)/pow(fiMe,2)), '\n'
 							if ((pow(fiM,2) + pow(m_u,2) <= pow(fiMe,2)) and (pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2) >= 4*pow(fiM,2)/pow(fiMe,2))):
 								u_piece = fiMe*g_SM_2/(16*pi)*(1-pow(m_u,2)/pow(fiMe,2) - pow(fiM,2)/pow(fiMe,2))*pow((pow((1-pow(m_u,2)/pow(fiMe,2) + pow(fiM,2)/pow(fiMe,2)),2) - 4*pow(fiM,2)/pow(fiMe,2)),0.5)
 								number_width_U += u_piece
@@ -268,14 +271,16 @@ for modelType in masspoints.model:
 					x = 0
 					while (x < num_scripts):
 						if masspoints.systematics == 0:
-							baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st
+							#baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st
+							baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC
 						else:
 							iS = masspoints.syst_list[int(math.floor(x/2))]
 							if x%2 == 0:
 								iDir = '_up'
 							else:
 								iDir = '_down'
-							baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iS + iDir
+							#baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iS + iDir
+							baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC + "_" + iS + iDir
 
 						print "baseName is " + baseName
 	
@@ -340,7 +345,8 @@ for modelType in masspoints.model:
 						queue = "mel_long"
                 	                        walt = "walltime=24:00:00"
 
-						os.system("qsub -q " + queue + " -l " + walt + " -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)	
+						os.system("qsub -q " + queue + " -l " + walt + " -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script) 
+						#os.system("qsub -q " + queue + " -l " + walt + " -l nodes=1:ppn=6 -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)	
 	                	       		#os.system("qsub -q " + queue + " -l " + walt + " -l ncpus=6 -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)	# will only run if 6 cpus available
 
 						os.system("mv " + scriptName + " batch_scripts/")

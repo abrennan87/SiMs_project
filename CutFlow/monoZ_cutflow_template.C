@@ -517,6 +517,8 @@ void monoZ_cutflow_INPUT_ADAP_NAME() {
     cout << "num_post_MET450 : " << num_post_MET450 << endl;
     cout << "num_post_finalMETcut : " << num_post_finalMETcut << endl;
 
+    // BEGIN IMPORTANT OUTPUT LINES
+
     cout << "acc MET > 150 : " << acc_150 << endl;
     cout << "acc MET > 250 : " << acc_250 << endl;
     cout << "acc MET > 350 : " << acc_350 << endl;
@@ -526,6 +528,8 @@ void monoZ_cutflow_INPUT_ADAP_NAME() {
     cout << "MET stat > 250 : " << statunc_250 << endl;
     cout << "MET stat > 350 : " << statunc_350 << endl;
     cout << "MET stat > 450 : " << statunc_450 << endl;
+
+    // END IMPORTANT OUTPUT LINES
 
     // Save histograms
     TFile *f = new TFile(outRootFile,"RECREATE");

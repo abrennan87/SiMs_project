@@ -103,6 +103,8 @@ vector<Double_t>  jet_MDF_E_v;
 vector<Double_t>  jet_MDF_eta_v;
 vector<Double_t>  jet_MDF_phi_v;
 vector<Double_t>  jet_MDF_m_v;
+vector<Double_t>  jet_MDF_sqrty_v;
+vector<Double_t>  jet_MDF_sqrty_cuts_v;
 
 vector<Double_t>  Vertex_x_v;
 vector<Double_t>  Vertex_y_v;

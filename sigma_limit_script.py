@@ -7,13 +7,15 @@ import time
 import math
 
 # list below should be completed
-modelType = 'SVD'
+#modelType = 'SVD'
+modelType = 'SAD'
 #modelType = 'TSD'
 #points = ['SVD_10_10_min_rat', 'SVD_10_200_min_rat', 'SVD_10_500_min_rat', 'SVD_10_700_min_rat', 'SVD_10_1000_min_rat', 'SVD_10_1200_min_rat', 'SVD_200_10_min_rat', 'SVD_200_200_min_rat', 'SVD_200_220_min_rat', 'SVD_200_500_min_rat', 'SVD_200_700_min_rat', 'SVD_200_1000_min_rat', 'SVD_200_1200_min_rat', 'SVD_400_10_min_rat', 'SVD_400_200_min_rat', 'SVD_400_400_min_rat', 'SVD_400_420_min_rat', 'SVD_400_500_min_rat', 'SVD_400_700_min_rat', 'SVD_400_1000_min_rat', 'SVD_400_1200_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_400_min_rat', 'SVD_1000_500_min_rat', 'SVD_1000_700_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_1100_min_rat', 'SVD_1000_1200_min_rat']
-points = ['SVD_1_1_min_rat', 'SVD_1_2_min_rat', 'SVD_1_10_min_rat', 'SVD_1_20_min_rat', 'SVD_1_100_min_rat', 'SVD_1_200_min_rat', 'SVD_1_1000_min_rat', 'SVD_1_2000_min_rat', 'SVD_1_20000_min_rat', 'SVD_10_1_min_rat', 'SVD_10_2_min_rat', 'SVD_10_10_min_rat', 'SVD_10_20_min_rat', 'SVD_10_100_min_rat', 'SVD_10_200_min_rat', 'SVD_10_1000_min_rat', 'SVD_10_2000_min_rat', 'SVD_10_20000_min_rat', 'SVD_100_1_min_rat', 'SVD_100_2_min_rat', 'SVD_100_10_min_rat', 'SVD_100_20_min_rat', 'SVD_100_100_min_rat', 'SVD_100_200_min_rat', 'SVD_100_1000_min_rat', 'SVD_100_2000_min_rat', 'SVD_100_20000_min_rat', 'SVD_1000_1_min_rat', 'SVD_1000_2_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_20_min_rat', 'SVD_1000_100_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_2000_min_rat', 'SVD_1000_20000_min_rat']
+#points = ['SVD_1_1_min_rat', 'SVD_1_2_min_rat', 'SVD_1_10_min_rat', 'SVD_1_20_min_rat', 'SVD_1_100_min_rat', 'SVD_1_200_min_rat', 'SVD_1_1000_min_rat', 'SVD_1_2000_min_rat', 'SVD_1_20000_min_rat', 'SVD_10_1_min_rat', 'SVD_10_2_min_rat', 'SVD_10_10_min_rat', 'SVD_10_20_min_rat', 'SVD_10_100_min_rat', 'SVD_10_200_min_rat', 'SVD_10_1000_min_rat', 'SVD_10_2000_min_rat', 'SVD_10_20000_min_rat', 'SVD_100_1_min_rat', 'SVD_100_2_min_rat', 'SVD_100_10_min_rat', 'SVD_100_20_min_rat', 'SVD_100_100_min_rat', 'SVD_100_200_min_rat', 'SVD_100_1000_min_rat', 'SVD_100_2000_min_rat', 'SVD_100_20000_min_rat', 'SVD_1000_1_min_rat', 'SVD_1000_2_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_20_min_rat', 'SVD_1000_100_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_2000_min_rat', 'SVD_1000_20000_min_rat']
+points = ['SAD_1_1_min_rat', 'SAD_1_2_min_rat', 'SAD_1_10_min_rat', 'SAD_1_20_min_rat', 'SAD_1_100_min_rat', 'SAD_1_200_min_rat', 'SAD_1_1000_min_rat', 'SAD_1_2000_min_rat', 'SAD_1_20000_min_rat', 'SAD_10_1_min_rat', 'SAD_10_2_min_rat', 'SAD_10_10_min_rat', 'SAD_10_20_min_rat', 'SAD_10_100_min_rat', 'SAD_10_200_min_rat', 'SAD_10_1000_min_rat', 'SAD_10_2000_min_rat', 'SAD_10_20000_min_rat', 'SAD_100_1_min_rat', 'SAD_100_2_min_rat', 'SAD_100_10_min_rat', 'SAD_100_20_min_rat', 'SAD_100_100_min_rat', 'SAD_100_200_min_rat', 'SAD_100_1000_min_rat', 'SAD_100_2000_min_rat', 'SAD_100_20000_min_rat', 'SAD_1000_1_min_rat', 'SAD_1000_2_min_rat', 'SAD_1000_10_min_rat', 'SAD_1000_20_min_rat', 'SAD_1000_100_min_rat', 'SAD_1000_200_min_rat', 'SAD_1000_1000_min_rat', 'SAD_1000_2000_min_rat', 'SAD_1000_20000_min_rat']
 #points = ['TSD_1_10_min_rat', 'TSD_1_20_min_rat', 'TSD_1_100_min_rat', 'TSD_1_200_min_rat', 'TSD_1_1000_min_rat', 'TSD_1_2000_min_rat', 'TSD_1_20000_min_rat', 'TSD_10_11_min_rat', 'TSD_10_20_min_rat', 'TSD_10_100_min_rat', 'TSD_10_200_min_rat', 'TSD_10_1000_min_rat', 'TSD_10_2000_min_rat', 'TSD_10_20000_min_rat', 'TSD_100_110_min_rat', 'TSD_100_200_min_rat', 'TSD_100_1000_min_rat', 'TSD_100_2000_min_rat', 'TSD_100_20000_min_rat', 'TSD_1000_1100_min_rat', 'TSD_1000_2000_min_rat', 'TSD_1000_20000_min_rat']
-#ratio = [0.2, 0.5, 1, 2, 5]
-ratio = [1]
+ratio = [0.2, 0.5, 1, 2, 5]
+#ratio = [1]
 systs = ['PDF+tune', 'scale']
 gq_nom = 1
 
@@ -23,7 +25,8 @@ cutflowDir = localDir + "CutFlow/txt_outputs/"
 
 # create the limits file
 #limits = localDir + "limits_store_SVD_Wmin.txt"
-limits = localDir + "limits_store_SVD_final.txt"
+#limits = localDir + "limits_store_SVD_final.txt"
+limits = localDir + "limits_store_" + modelType + "_final.txt"
 #limits = localDir + "limits_store_TSD_final.txt"
 with open(limits, "w") as f:
         f.write("This file is created with sigma_limit_script.py, it reads the sample names in from above (ie, NOT from masspoints(_2).py), cross sections from the LHEs, acceptances from the Cutflow/txt_outputs/cutflow_output_XXX.txt outputs, and calculates the limit on sigma and the coupling (sqrt(g_chi*g_q) = g_q*sqrt(rat)).\n\n")
@@ -149,7 +152,11 @@ for sh_name in points:
 		#print 'best_SR[' + name + ']: ' + best_SR[name]
 		#print 'In best SR, the acc and stat are: ' + acc[name + best_SR[name]] + ', ' + acc_stat[name + best_SR[name]]
 	
+
 		# A_nom_p is the nominal acceptance - the stat error
+		if name not in best_SR:
+			continue	
+
 		A_nom_p = max(0, acc[name + best_SR[name]] - acc_stat[name + best_SR[name]])	# set to 0 is acc_stat > acc
 
 		# sig_lim_95 is the limit on sigma calculated with A_nom_p, ie it is the limit with the statistical uncertainty included but not the systematics. sig_lim is the limit calculated with the nominal acceptance.

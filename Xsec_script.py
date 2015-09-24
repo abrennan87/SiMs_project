@@ -1,3 +1,5 @@
+# This script is now superceded by sigma_limit_script.py.
+
 import sys
 
 import os
@@ -21,42 +23,44 @@ for modelType in masspoints_2.model:
                 fiM = float(iM)
                 for iMe in masspoints_2.Mmed:
                         fiMe = float(iMe)
-                        for iW in masspoints_2.widths:
-				if masspoints_2.systematics == 0:
-                                        num_scripts = 1
-                                elif masspoints_2.systematics == 1:
-                                        num_scripts = 2*len(masspoints_2.syst_list) + 1		# include the nominal value as well here
-				x = 0
-                                while (x < num_scripts):
-					if x == 0:
-						baseName = modelType + "_" + iM + "_" + iMe + "_" + iW
-                                        else:
-                                                iS = masspoints_2.syst_list[int(math.floor((x-1)/2))]
-                                                if (x-1)%2 == 0:
-                                                        iDir = '_up'
-                                                else:
-                                                        iDir = '_down'
-                                                baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_" + iS + iDir
+			for ratio in masspoints_2.coupling_ratio:
+				rat_st = str(ratio).replace(".", "")
+                        	for iW in masspoints_2.widths:
+					if masspoints_2.systematics == 0:
+                                	        num_scripts = 1
+                                	elif masspoints_2.systematics == 1:
+                                	        num_scripts = 2*len(masspoints_2.syst_list) + 1		# include the nominal value as well here
+					x = 0
+                                	while (x < num_scripts):
+						if x == 0:
+							baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st
+                                	        else:
+                                	                iS = masspoints_2.syst_list[int(math.floor((x-1)/2))]
+                                	                if (x-1)%2 == 0:
+                                	                        iDir = '_up'
+                                	                else:
+                                	                        iDir = '_down'
+                                	                baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iS + iDir
+	
+        	                                print "baseName is " + baseName
 
-                                        print "baseName is " + baseName
+						with open(Xsec_script, "a") as f:
+       							f.write(baseName + ": ")
 
-					with open(Xsec_script, "a") as f:
-       						f.write(baseName + ": ")
+						events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + baseName + "/unweighted_events.lhe"
+						if os.path.exists(events_file):
 
-					events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + baseName + "/unweighted_events.lhe"
-					if os.path.exists(events_file):
+							with open(events_file) as g:
+    								for line in g:
+        								if 'Integrated weight' in line:
+										line = line.replace(" ", "")
+										i = line.index(':')		# position of :
+										xsec = str(float(line[i+1:])*1000)
+            									break		# ensures doesn't continue reading the file after this line
+                					with open(Xsec_script, "a") as f:
+                        					f.write("               " + xsec + "\n")
+        					else:
+               	 					with open(Xsec_script, "a") as f:
+                        					f.write("nonexistant!\n")					
 
-						with open(events_file) as g:
-    							for line in g:
-        							if 'Integrated weight' in line:
-									line = line.replace(" ", "")
-									i = line.index(':')		# position of :
-									xsec = str(float(line[i+1:])*1000)
-            								break		# ensures doesn't continue reading the file after this line
-                				with open(Xsec_script, "a") as f:
-                        				f.write("               " + xsec + "\n")
-        				else:
-               	 				with open(Xsec_script, "a") as f:
-                        				f.write("nonexistant!\n")					
-
-					x = x + 1
+						x = x + 1

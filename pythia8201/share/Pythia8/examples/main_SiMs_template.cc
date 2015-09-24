@@ -36,8 +36,10 @@ int main(int argc, char* argv[]) {
   Pythia pythia;
 
   // Settings used in the main program.
-  pythia.readString("Main:numberOfEvents = 10000"); 		// number of events to generate (ie the final number that you want accepted, -1 for as many as possible). Note that if we want 10,000 events and many are rejected after matching, we need to generate ~50% more MG events!
-  pythia.readString("Main:timesAllowErrors = 3");		// how many aborts before run stops
+  //pythia.readString("Main:numberOfEvents = 10000"); 		// number of events to generate (ie the final number that you want accepted, -1 for as many as possible). Note that if we want 10,000 events and many are rejected after matching, we need to generate ~50% more MG events!
+  pythia.readString("Main:numberOfEvents = 20000");	// changed for making mono-jet width demonstration plots
+
+  pythia.readString("Main:timesAllowErrors = 100");		// how many aborts before run stops
   pythia.readString("Main:spareMode1 = 0");			// skip n events at beginning of file
 
   // Settings related to output in init(), next() and stat()
