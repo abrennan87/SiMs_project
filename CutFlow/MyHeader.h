@@ -55,6 +55,9 @@ public :
    vector<double>  *mu_truth_eta;
    vector<double>  *mu_truth_phi;
    vector<double>  *mu_truth_charge;
+   Int_t           ph_truth_n;
+   vector<double>  *ph_truth_pt;
+   vector<double>  *ph_truth_eta;
    Int_t           jet_AntiKt4_truth_n;
    vector<double>  *jet_AntiKt4_truth_E;
    vector<double>  *jet_AntiKt4_truth_pt;
@@ -101,6 +104,9 @@ public :
    TBranch        *b_mu_truth_eta;   //!
    TBranch        *b_mu_truth_phi;   //!
    TBranch        *b_mu_truth_charge;   //!
+   TBranch        *b_ph_truth_n;   //!
+   TBranch        *b_ph_truth_pt;   //!
+   TBranch        *b_ph_truth_eta;   //!
    TBranch        *b_jet_AntiKt4_truth_n;   //!
    TBranch        *b_jet_AntiKt4_truth_E;   //!
    TBranch        *b_jet_AntiKt4_truth_pt;   //!
@@ -261,6 +267,9 @@ void MyHeader::Init(TTree *tree)
    fChain->SetBranchAddress("mu_truth_eta", &mu_truth_eta, &b_mu_truth_eta);
    fChain->SetBranchAddress("mu_truth_phi", &mu_truth_phi, &b_mu_truth_phi);
    fChain->SetBranchAddress("mu_truth_charge", &mu_truth_charge, &b_mu_truth_charge);
+   fChain->SetBranchAddress("ph_truth_n", &ph_truth_n, &b_ph_truth_n);
+   fChain->SetBranchAddress("ph_truth_pt", &ph_truth_pt, &b_ph_truth_pt);
+   fChain->SetBranchAddress("ph_truth_eta", &ph_truth_eta, &b_ph_truth_eta);
    fChain->SetBranchAddress("jet_AntiKt4_truth_n", &jet_AntiKt4_truth_n, &b_jet_AntiKt4_truth_n);
    fChain->SetBranchAddress("jet_AntiKt4_truth_E", &jet_AntiKt4_truth_E, &b_jet_AntiKt4_truth_E);
    fChain->SetBranchAddress("jet_AntiKt4_truth_pt", &jet_AntiKt4_truth_pt, &b_jet_AntiKt4_truth_pt);

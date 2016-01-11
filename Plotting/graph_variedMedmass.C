@@ -5,10 +5,10 @@ void graph_variedMedmass() {
    TCanvas *c1 = new TCanvas("c1","sigma_limits_variedMedmass",200,10,700,500);
    c1->SetLogx();
 
-   TGraphErrors *gr1 = new TGraphErrors("text_graphs/limits_SVD_DM10_1.txt");
-   TGraphErrors *gr2 = new TGraphErrors("text_graphs/limits_SVD_DM200_1.txt");
-   TGraphErrors *gr3 = new TGraphErrors("text_graphs/limits_SVD_DM400_1.txt");
-   TGraphErrors *gr4 = new TGraphErrors("text_graphs/limits_SVD_DM1000_1.txt");
+   TGraphErrors *gr1 = new TGraphErrors("text_graphs/limits_SVD_DM10_min_rat1.txt");
+   TGraphErrors *gr2 = new TGraphErrors("text_graphs/limits_SVD_DM200_min_rat1.txt");
+   TGraphErrors *gr3 = new TGraphErrors("text_graphs/limits_SVD_DM400_min_rat1.txt");
+   TGraphErrors *gr4 = new TGraphErrors("text_graphs/limits_SVD_DM1000_min_rat1.txt");
 
    TString xAxTitle = TString("m_{med} [GeV]");
    TString yAxTitle = TString("#sigma(pp #rightarrow Z#chi#chi) #times BR(Z #rightarrow l+l-) [fb]");
@@ -62,6 +62,6 @@ void graph_variedMedmass() {
    l->Draw();
 
    c1->Modified();
-   c1->SaveAs("sigma_limits_variedMedmass.pdf");
+   c1->SaveAs("sigma_limits_variedMedmass_SVD_min_rat1.pdf");
 }
 

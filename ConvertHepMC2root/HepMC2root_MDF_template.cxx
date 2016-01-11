@@ -241,14 +241,14 @@ int main(int argc, char *argv[]){
               ph_count+=1;
               //cout << "photon pT is " << (particles[p].pt())/1000. << endl;
               // smearing is not working, not sure why - fix up later
-              //random_device rd;
-              //mt19937 e2(rd());                                                           // random generator
-              //normal_distribution<> dist_ph(0, 0.05);                                        // take from normal distribution with mean 0, standard dev = uncertainty on muon resolution = 5% - need to check this!
-              //float smear_factor_ph = 1. + dist_ph(e2);
-              //float ph_pT_unsmeared = particles[p].pt();
-              //float ph_pT_smeared = ph_pT_unsmeared*smear_factor_ph;                               // apply smearing
-              //ph_pt_v.push_back( ph_pT_smeared );
-              ph_pt_v.push_back( particles[p].pt() );
+              random_device rd;
+              mt19937 e2(rd());                                                           // random generator
+              normal_distribution<> dist_ph(0, 0.05);                                        // take from normal distribution with mean 0, standard dev = uncertainty on muon resolution = 5% - need to check this!
+              float smear_factor_ph = 1. + dist_ph(e2);
+              float ph_pT_unsmeared = particles[p].pt();
+              float ph_pT_smeared = ph_pT_unsmeared*smear_factor_ph;                               // apply smearing
+              ph_pt_v.push_back( ph_pT_smeared );
+              //ph_pt_v.push_back( particles[p].pt() );
               ph_px_v.push_back( particles[p].px() );
               ph_py_v.push_back( particles[p].py() );
               ph_pz_v.push_back( particles[p].pz() );

@@ -272,7 +272,12 @@ for modelType in masspoints.model:
 					while (x < num_scripts):
 						if masspoints.systematics == 0:
 							#baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st
-							baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC
+							if masspoints.monoX == 'jet':
+								baseName = modelType + "_monojet_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC
+                                                        elif masspoints.monoX == 'WZ':
+                                                                baseName = modelType + "_monoWZ_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC
+							else:
+								baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC
 						else:
 							iS = masspoints.syst_list[int(math.floor(x/2))]
 							if x%2 == 0:
@@ -280,7 +285,12 @@ for modelType in masspoints.model:
 							else:
 								iDir = '_down'
 							#baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iS + iDir
-							baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC + "_" + iS + iDir
+							if masspoints.monoX == 'jet':
+								baseName = modelType + "_monojet_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC + "_" + iS + iDir
+                                                        elif masspoints.monoX == 'WZ':
+                                                                baseName = modelType + "_monoWZ_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC + "_" + iS + iDir
+							else:
+								baseName = modelType + "_" + iM + "_" + iMe + "_" + iW + "_rat" + rat_st + "_" + iC + "_" + iS + iDir
 
 						print "baseName is " + baseName
 	
@@ -345,8 +355,9 @@ for modelType in masspoints.model:
 						queue = "mel_long"
                 	                        walt = "walltime=24:00:00"
 
-						os.system("qsub -q " + queue + " -l " + walt + " -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script) 
-						#os.system("qsub -q " + queue + " -l " + walt + " -l nodes=1:ppn=6 -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)	
+						#os.system("qsub -q " + queue + " -l " + walt + " -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script) 
+						#os.system("qsub -q " + queue + " -l " + walt + " -l nodes=1:ppn=11 -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)	
+						os.system("qsub -q " + queue + " -l " + walt + " -l nodes=1:ppn=6 -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)
 	                	       		#os.system("qsub -q " + queue + " -l " + walt + " -l ncpus=6 -V -N " + jobName + " -e " + logDir + " -o " + logDir + " " + scrDir + "/" + script)	# will only run if 6 cpus available
 
 						os.system("mv " + scriptName + " batch_scripts/")

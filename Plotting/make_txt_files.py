@@ -12,7 +12,8 @@ localDir = "/home/ameliajb/workarea/SiMs_AtlasExternal_v2/"
 MGdir = localDir + "MG5_aMC_v2_2_2/"
 #limFile = localDir + "limits_store_SVD_Wmin.txt"
 #limFile = localDir + "limits_store_testing.txt"
-limFile = localDir + "limits_store_SVD_final.txt"
+#limFile = localDir + "limits_store_SVD_final.txt"
+limFile = localDir + "limits_store_SAD_final.txt"
 #limFile = localDir + "limits_store_TSD_final.txt"
 storeDir = localDir + "Plotting/text_graphs/"
 
@@ -82,6 +83,8 @@ for modelType in masspoints_2.model:
 					with open(flim_out_nom, "a") as g:
                                                 g.write(str(iM) + " " + str(iMe) + " " + str(f_obs_nom[base]) + "\n")
 
+"""
+#Don't want this stuff below anymore, ignoring the sigma limits
 		for iM in masspoints_2.Mdm:
 			for ratio in masspoints_2.coupling_ratio:
                         	rat_st = str(ratio).replace('.', '')
@@ -129,3 +132,4 @@ for modelType in masspoints_2.model:
                              	           g.write(str(iM) + " " + str(sig_exp[base]) + " 0 " + str(sig_exp_unc[base]) + "\n")
 					with open(output_obs, "a") as h:
                                            h.write(str(iM) + " " + str(sig_obs[base]) + " 0 " + str(sig_obs_unc[base]) + "\n")
+"""

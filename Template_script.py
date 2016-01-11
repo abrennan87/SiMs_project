@@ -7,7 +7,8 @@ import time
 import sys
 sys.path.append('/home/ameliajb/workarea/SiMs_AtlasExternal_v2/')
 
-qcut_num = MDM_num/4
+#qcut_num = MDM_num/4
+qcut_num = 80
 channel = 'CHANNEL'
 runMG = RUNMG
 runPythia = RUNPYTHIA
@@ -47,6 +48,8 @@ if channel == 'Z':
 	mgModelTem = mgDirGen + "SiM_MODELTYPE_monoZ_8TeV/"		# For mono-Z processes
 elif channel == 'jet':
 	mgModelTem = mgDirGen + "SiM_MODELTYPE_monojet_8TeV/"		# For mono-jet processes
+elif channel == 'WZ':
+        mgModelTem = mgDirGen + "SiM_MODELTYPE_monoWZ_8TeV/"
 else:
 	sys.exit('What channel are you studying?? - abort!')
 scriptDir = os.getenv("PBS_O_WORKDIR")
@@ -79,6 +82,8 @@ if runMG == 1:
 		mgModelTemTmp = mgDirGenTmp + "SiM_MODELTYPE_monoZ_8TeV/" 		# For mono-Z processes
 	elif channel == 'jet':
 		mgModelTemTmp = mgDirGenTmp + "SiM_MODELTYPE_monojet_8TeV/"		# For mono-jet processes	
+	elif channel == 'WZ':
+                mgModelTemTmp = mgDirGenTmp + "SiM_MODELTYPE_monoWZ_8TeV/" 
 
 	with open(track_script, "a") as f:
 		f.write("Creating param_card.dat.\n")
@@ -143,6 +148,8 @@ if runMG == 1:
         if 'qcut' in outputName:
 		qcut_up = qcut_num*2.
 		qcut_down = qcut_num/2.
+		print 'qcut up is '  + str(qcut_up)
+		print 'qcut down is '  + str(qcut_down)
 		if 'up' in outputName:
 	        	os.system("sed -i 's/XQCUT/" + str(qcut_up) + "/g' " + mgModelTemTmp + "Cards/run_card.dat")
 		elif 'down' in outputName:
@@ -150,7 +157,7 @@ if runMG == 1:
 		else:
                         print 'No "up" or "down" in outputName'
         else:
-		if channel == 'Z':
+		if (channel == 'Z' or channel == 'WZ'):
 			os.system("sed -i 's/XQCUT/0/g' " + mgModelTemTmp + "Cards/run_card.dat")                      
 		elif channel == 'jet':
 			#os.system("sed -i 's/XQCUT/" + str(qcut_num) + "/g' " + mgModelTemTmp + "Cards/run_card.dat")
@@ -235,9 +242,16 @@ if channel == 'Z':
 	mgModelTem = mgDirGen + "SiM_MODELTYPE_monoZ_8TeV/"		# For mono-Z processes
 elif channel == 'jet':
 	mgModelTem = mgDirGen + "SiM_MODELTYPE_monojet_8TeV/"           # For mono-jet processes
+elif channel == 'WZ':
+	mgModelTem = mgDirGen + "SiM_MODELTYPE_monoWZ_8TeV/"             # For mono-WZjj processes
 else:
 	sys.exit('What channel are you studying?? - abort!')
 mgPath = mgModelTem + "Events/" + outputName
+
+# Change slightly if looking for mono-jet output, since the basename has _monojet included but this is not in the Events/name in MG output. ONLY needed for very preliminary 100_1000 tests.
+#if channel == 'jet':
+#       outputName_adap = outputName.replace("_monojet", "")
+#       mgPath = mgModelTem + "Events/" + outputName_adap
 main_name = "main_SiMs_" + outputName
 
 mgPath_adapted = mgPath.replace("/", "\/")
@@ -253,7 +267,7 @@ if runPythia == 1:
 			f.write("\nMadGraph output does not exist, Pythia cannot execute.")
 		sys.exit("MadGraph output does not exist, Pythia cannot execute.")
 
-	# cp the main_SiMs_template.cc script
+	# cp the main_SiMs_template.cc script 
 	os.system("cp " + pythiaDir + "main_SiMs_template.cc " + pythiaDir + "main_SiMs_" + outputName + ".cc")
 	pythiaScript = pythiaDir + "main_SiMs_" + outputName + ".cc"
 	os.system("sed -i 's/path/" + mgPath_adapted + "/g' " + pythiaScript)
@@ -281,7 +295,7 @@ if runPythia == 1:
                 sys.exit('Tune:pp is not set to 10 - abort!')
 
 	# set matching according to if monoZ or monojet - default is on, as if events are removed in mono-Z this will show up immediately
-	if channel == 'Z':	
+	if (channel == 'Z' or channel == 'WZ'):	
 		os.system("sed -i 's/JetMatching:merge = on/JetMatching:merge = off/g' " + pythiaScript)
 		os.system("sed -i 's/pythia.setUserHooksPtr(matching)/\/\/pythia.setUserHooksPtr(matching)/g' " + pythiaScript)
 		os.system("sed -i 's/delete matching/\/\/delete matching/g' " + pythiaScript)					# TODO should this also include setMad = on vs off??
@@ -375,14 +389,20 @@ if runCon == 1:
 
 	print cmd
 
-	with open(convDir + "HepMCout.txt", "w") as outfile:
-	        with open(convDir + "HepMCout_err.txt", "w") as outfileerr:
+	with open(convDir + "HepMCout_"+outputName+".txt", "w") as outfile:
+	        with open(convDir + "HepMCout_err_"+outputName+".txt", "w") as outfileerr:
 	                subprocess.call(str(cmd), shell = True, stdout = outfile, stderr = outfileerr)
 
 	with open(track_script, "a") as f:
                 f.write("done.\n")
                 f.write("The relevant output_XXX folder should now be in ConvertHepMC2root/ folder.\n")
 		f.write("HepMC2oot step is complete.\n\n")
+
+	if os.path.exists(convDir + "HepMCout_"+outputName+".txt"):
+		os.system("mv " + convDir + "HepMCout_"+outputName+".txt " + convDir + "running_outputs/")
+
+        if os.path.exists(convDir + "HepMCout_err_"+outputName+".txt"):
+                os.system("mv " + convDir + "HepMCout_err_"+outputName+".txt " + convDir + "running_outputs/")
 
 	if os.path.exists(convDir + "rootFiles/OUTPUT_" + outputName + ".root"):
 		os.system("rm " + pythiaDir + "HepMC_out/BASENAME.dat")

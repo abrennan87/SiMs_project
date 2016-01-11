@@ -8,15 +8,39 @@ import math
 
 # list below should be completed
 #modelType = 'SVD'
-modelType = 'SAD'
-#modelType = 'TSD'
-#points = ['SVD_10_10_min_rat', 'SVD_10_200_min_rat', 'SVD_10_500_min_rat', 'SVD_10_700_min_rat', 'SVD_10_1000_min_rat', 'SVD_10_1200_min_rat', 'SVD_200_10_min_rat', 'SVD_200_200_min_rat', 'SVD_200_220_min_rat', 'SVD_200_500_min_rat', 'SVD_200_700_min_rat', 'SVD_200_1000_min_rat', 'SVD_200_1200_min_rat', 'SVD_400_10_min_rat', 'SVD_400_200_min_rat', 'SVD_400_400_min_rat', 'SVD_400_420_min_rat', 'SVD_400_500_min_rat', 'SVD_400_700_min_rat', 'SVD_400_1000_min_rat', 'SVD_400_1200_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_400_min_rat', 'SVD_1000_500_min_rat', 'SVD_1000_700_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_1100_min_rat', 'SVD_1000_1200_min_rat']
-#points = ['SVD_1_1_min_rat', 'SVD_1_2_min_rat', 'SVD_1_10_min_rat', 'SVD_1_20_min_rat', 'SVD_1_100_min_rat', 'SVD_1_200_min_rat', 'SVD_1_1000_min_rat', 'SVD_1_2000_min_rat', 'SVD_1_20000_min_rat', 'SVD_10_1_min_rat', 'SVD_10_2_min_rat', 'SVD_10_10_min_rat', 'SVD_10_20_min_rat', 'SVD_10_100_min_rat', 'SVD_10_200_min_rat', 'SVD_10_1000_min_rat', 'SVD_10_2000_min_rat', 'SVD_10_20000_min_rat', 'SVD_100_1_min_rat', 'SVD_100_2_min_rat', 'SVD_100_10_min_rat', 'SVD_100_20_min_rat', 'SVD_100_100_min_rat', 'SVD_100_200_min_rat', 'SVD_100_1000_min_rat', 'SVD_100_2000_min_rat', 'SVD_100_20000_min_rat', 'SVD_1000_1_min_rat', 'SVD_1000_2_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_20_min_rat', 'SVD_1000_100_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_2000_min_rat', 'SVD_1000_20000_min_rat']
-points = ['SAD_1_1_min_rat', 'SAD_1_2_min_rat', 'SAD_1_10_min_rat', 'SAD_1_20_min_rat', 'SAD_1_100_min_rat', 'SAD_1_200_min_rat', 'SAD_1_1000_min_rat', 'SAD_1_2000_min_rat', 'SAD_1_20000_min_rat', 'SAD_10_1_min_rat', 'SAD_10_2_min_rat', 'SAD_10_10_min_rat', 'SAD_10_20_min_rat', 'SAD_10_100_min_rat', 'SAD_10_200_min_rat', 'SAD_10_1000_min_rat', 'SAD_10_2000_min_rat', 'SAD_10_20000_min_rat', 'SAD_100_1_min_rat', 'SAD_100_2_min_rat', 'SAD_100_10_min_rat', 'SAD_100_20_min_rat', 'SAD_100_100_min_rat', 'SAD_100_200_min_rat', 'SAD_100_1000_min_rat', 'SAD_100_2000_min_rat', 'SAD_100_20000_min_rat', 'SAD_1000_1_min_rat', 'SAD_1000_2_min_rat', 'SAD_1000_10_min_rat', 'SAD_1000_20_min_rat', 'SAD_1000_100_min_rat', 'SAD_1000_200_min_rat', 'SAD_1000_1000_min_rat', 'SAD_1000_2000_min_rat', 'SAD_1000_20000_min_rat']
-#points = ['TSD_1_10_min_rat', 'TSD_1_20_min_rat', 'TSD_1_100_min_rat', 'TSD_1_200_min_rat', 'TSD_1_1000_min_rat', 'TSD_1_2000_min_rat', 'TSD_1_20000_min_rat', 'TSD_10_11_min_rat', 'TSD_10_20_min_rat', 'TSD_10_100_min_rat', 'TSD_10_200_min_rat', 'TSD_10_1000_min_rat', 'TSD_10_2000_min_rat', 'TSD_10_20000_min_rat', 'TSD_100_110_min_rat', 'TSD_100_200_min_rat', 'TSD_100_1000_min_rat', 'TSD_100_2000_min_rat', 'TSD_100_20000_min_rat', 'TSD_1000_1100_min_rat', 'TSD_1000_2000_min_rat', 'TSD_1000_20000_min_rat']
-ratio = [0.2, 0.5, 1, 2, 5]
-#ratio = [1]
+#modelType = 'SAD'
+modelType = 'TSD'
+
+#ratio = [0.2]
+#SVD
+#points = ['SVD_1_1_min_rat', 'SVD_1_2_min_rat', 'SVD_1_10_min_rat', 'SVD_1_20_min_rat', 'SVD_1_100_min_rat', 'SVD_1_200_min_rat', 'SVD_1_1000_min_rat', 'SVD_1_2000_min_rat', 'SVD_3_1_min_rat', 'SVD_3_2_min_rat', 'SVD_3_10_min_rat', 'SVD_3_20_min_rat', 'SVD_3_100_min_rat', 'SVD_3_200_min_rat', 'SVD_3_1000_min_rat', 'SVD_3_2000_min_rat', 'SVD_10_1_min_rat', 'SVD_10_2_min_rat', 'SVD_10_10_min_rat', 'SVD_10_20_min_rat', 'SVD_10_100_min_rat', 'SVD_10_200_min_rat', 'SVD_10_1000_min_rat', 'SVD_10_2000_min_rat', 'SVD_30_1_min_rat', 'SVD_30_2_min_rat', 'SVD_30_10_min_rat', 'SVD_30_20_min_rat', 'SVD_30_100_min_rat', 'SVD_30_200_min_rat', 'SVD_30_1000_min_rat', 'SVD_30_2000_min_rat', 'SVD_100_1_min_rat', 'SVD_100_2_min_rat', 'SVD_100_10_min_rat', 'SVD_100_20_min_rat', 'SVD_100_100_min_rat', 'SVD_100_200_min_rat', 'SVD_100_1000_min_rat', 'SVD_100_2000_min_rat', 'SVD_300_1_min_rat', 'SVD_300_2_min_rat', 'SVD_300_10_min_rat', 'SVD_300_20_min_rat', 'SVD_300_100_min_rat', 'SVD_300_200_min_rat', 'SVD_300_1000_min_rat', 'SVD_300_2000_min_rat', 'SVD_1000_1_min_rat', 'SVD_1000_2_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_20_min_rat', 'SVD_1000_100_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_2000_min_rat']
+#SAD - same as SVD, all samples included
+#points = ['SAD_1_1_min_rat', 'SAD_1_2_min_rat', 'SAD_1_10_min_rat', 'SAD_1_20_min_rat', 'SAD_1_100_min_rat', 'SAD_1_200_min_rat', 'SAD_1_1000_min_rat', 'SAD_1_2000_min_rat', 'SAD_3_1_min_rat', 'SAD_3_2_min_rat', 'SAD_3_10_min_rat', 'SAD_3_20_min_rat', 'SAD_3_100_min_rat', 'SAD_3_200_min_rat', 'SAD_3_1000_min_rat', 'SAD_3_2000_min_rat', 'SAD_10_1_min_rat', 'SAD_10_2_min_rat', 'SAD_10_10_min_rat', 'SAD_10_20_min_rat', 'SAD_10_100_min_rat', 'SAD_10_200_min_rat', 'SAD_10_1000_min_rat', 'SAD_10_2000_min_rat', 'SAD_30_1_min_rat', 'SAD_30_2_min_rat', 'SAD_30_10_min_rat', 'SAD_30_20_min_rat', 'SAD_30_100_min_rat', 'SAD_30_200_min_rat', 'SAD_30_1000_min_rat', 'SAD_30_2000_min_rat', 'SAD_100_1_min_rat', 'SAD_100_2_min_rat', 'SAD_100_10_min_rat', 'SAD_100_20_min_rat', 'SAD_100_100_min_rat', 'SAD_100_200_min_rat', 'SAD_100_1000_min_rat', 'SAD_100_2000_min_rat', 'SAD_300_1_min_rat', 'SAD_300_2_min_rat', 'SAD_300_10_min_rat', 'SAD_300_20_min_rat', 'SAD_300_100_min_rat', 'SAD_300_200_min_rat', 'SAD_300_1000_min_rat', 'SAD_300_2000_min_rat', 'SAD_1000_1_min_rat', 'SAD_1000_2_min_rat', 'SAD_1000_10_min_rat', 'SAD_1000_20_min_rat', 'SAD_1000_100_min_rat', 'SAD_1000_200_min_rat', 'SAD_1000_1000_min_rat', 'SAD_1000_2000_min_rat']
+
+#ratio = [0.5] #- same as SVD, all samples included
+#points = ['SVD_1_1_min_rat', 'SVD_1_2_min_rat', 'SVD_1_10_min_rat', 'SVD_1_20_min_rat', 'SVD_1_100_min_rat', 'SVD_1_200_min_rat', 'SVD_1_1000_min_rat', 'SVD_1_2000_min_rat', 'SVD_3_1_min_rat', 'SVD_3_2_min_rat', 'SVD_3_10_min_rat', 'SVD_3_20_min_rat', 'SVD_3_100_min_rat', 'SVD_3_200_min_rat', 'SVD_3_1000_min_rat', 'SVD_3_2000_min_rat', 'SVD_10_1_min_rat', 'SVD_10_2_min_rat', 'SVD_10_10_min_rat', 'SVD_10_20_min_rat', 'SVD_10_100_min_rat', 'SVD_10_200_min_rat', 'SVD_10_1000_min_rat', 'SVD_10_2000_min_rat', 'SVD_30_1_min_rat', 'SVD_30_2_min_rat', 'SVD_30_10_min_rat', 'SVD_30_20_min_rat', 'SVD_30_100_min_rat', 'SVD_30_200_min_rat', 'SVD_30_1000_min_rat', 'SVD_30_2000_min_rat', 'SVD_100_1_min_rat', 'SVD_100_2_min_rat', 'SVD_100_10_min_rat', 'SVD_100_20_min_rat', 'SVD_100_100_min_rat', 'SVD_100_200_min_rat', 'SVD_100_1000_min_rat', 'SVD_100_2000_min_rat', 'SVD_300_1_min_rat', 'SVD_300_2_min_rat', 'SVD_300_10_min_rat', 'SVD_300_20_min_rat', 'SVD_300_100_min_rat', 'SVD_300_200_min_rat', 'SVD_300_1000_min_rat', 'SVD_300_2000_min_rat', 'SVD_1000_1_min_rat', 'SVD_1000_2_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_20_min_rat', 'SVD_1000_100_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_2000_min_rat'] 
+#points = ['SAD_1_1_min_rat', 'SAD_1_2_min_rat', 'SAD_1_10_min_rat', 'SAD_1_20_min_rat', 'SAD_1_100_min_rat', 'SAD_1_200_min_rat', 'SAD_1_1000_min_rat', 'SAD_1_2000_min_rat', 'SAD_3_1_min_rat', 'SAD_3_2_min_rat', 'SAD_3_10_min_rat', 'SAD_3_20_min_rat', 'SAD_3_100_min_rat', 'SAD_3_200_min_rat', 'SAD_3_1000_min_rat', 'SAD_3_2000_min_rat', 'SAD_10_1_min_rat', 'SAD_10_2_min_rat', 'SAD_10_10_min_rat', 'SAD_10_20_min_rat', 'SAD_10_100_min_rat', 'SAD_10_200_min_rat', 'SAD_10_1000_min_rat', 'SAD_10_2000_min_rat', 'SAD_30_1_min_rat', 'SAD_30_2_min_rat', 'SAD_30_10_min_rat', 'SAD_30_20_min_rat', 'SAD_30_100_min_rat', 'SAD_30_200_min_rat', 'SAD_30_1000_min_rat', 'SAD_30_2000_min_rat', 'SAD_100_1_min_rat', 'SAD_100_2_min_rat', 'SAD_100_10_min_rat', 'SAD_100_20_min_rat', 'SAD_100_100_min_rat', 'SAD_100_200_min_rat', 'SAD_100_1000_min_rat', 'SAD_100_2000_min_rat', 'SAD_300_1_min_rat', 'SAD_300_2_min_rat', 'SAD_300_10_min_rat', 'SAD_300_20_min_rat', 'SAD_300_100_min_rat', 'SAD_300_200_min_rat', 'SAD_300_1000_min_rat', 'SAD_300_2000_min_rat', 'SAD_1000_1_min_rat', 'SAD_1000_2_min_rat', 'SAD_1000_10_min_rat', 'SAD_1000_20_min_rat', 'SAD_1000_100_min_rat', 'SAD_1000_200_min_rat', 'SAD_1000_1000_min_rat', 'SAD_1000_2000_min_rat']  
+
+ratio = [1]
+#points = ['SVD_1_1_min_rat', 'SVD_1_2_min_rat', 'SVD_1_10_min_rat', 'SVD_1_20_min_rat', 'SVD_1_100_min_rat', 'SVD_1_200_min_rat', 'SVD_3_1_min_rat', 'SVD_3_2_min_rat', 'SVD_3_10_min_rat', 'SVD_3_20_min_rat', 'SVD_3_100_min_rat', 'SVD_3_200_min_rat', 'SVD_10_1_min_rat', 'SVD_10_2_min_rat', 'SVD_10_10_min_rat', 'SVD_10_20_min_rat', 'SVD_10_100_min_rat', 'SVD_10_200_min_rat', 'SVD_30_1_min_rat', 'SVD_30_2_min_rat', 'SVD_30_10_min_rat', 'SVD_30_20_min_rat', 'SVD_30_100_min_rat', 'SVD_30_200_min_rat', 'SVD_100_1_min_rat', 'SVD_100_2_min_rat', 'SVD_100_10_min_rat', 'SVD_100_20_min_rat', 'SVD_100_100_min_rat', 'SVD_100_200_min_rat', 'SVD_300_1_min_rat', 'SVD_300_2_min_rat', 'SVD_300_10_min_rat', 'SVD_300_20_min_rat', 'SVD_300_100_min_rat', 'SVD_300_200_min_rat', 'SVD_1000_1_min_rat', 'SVD_1000_2_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_20_min_rat', 'SVD_1000_100_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_2000_min_rat']   # still missing 30 (remove 30,1000/2000), 300 (remove 300,1000/2000) points
+#points = ['SAD_1_1_min_rat','SAD_1_2_min_rat','SAD_1_10_min_rat','SAD_1_20_min_rat', 'SAD_1_100_min_rat', 'SAD_1_200_min_rat', 'SAD_1_1000_min_rat', 'SAD_3_1_min_rat', 'SAD_3_2_min_rat', 'SAD_3_10_min_rat', 'SAD_3_20_min_rat', 'SAD_3_100_min_rat', 'SAD_3_200_min_rat', 'SAD_3_1000_min_rat', 'SAD_10_1_min_rat', 'SAD_10_2_min_rat', 'SAD_10_10_min_rat', 'SAD_10_20_min_rat', 'SAD_10_100_min_rat', 'SAD_10_200_min_rat', 'SAD_10_1000_min_rat', 'SAD_30_1_min_rat', 'SAD_30_2_min_rat', 'SAD_30_10_min_rat', 'SAD_30_20_min_rat', 'SAD_30_100_min_rat', 'SAD_30_200_min_rat', 'SAD_30_1000_min_rat', 'SAD_100_1_min_rat', 'SAD_100_2_min_rat', 'SAD_100_10_min_rat', 'SAD_100_20_min_rat', 'SAD_100_100_min_rat', 'SAD_100_200_min_rat', 'SAD_100_1000_min_rat', 'SAD_100_2000_min_rat', 'SAD_300_1_min_rat', 'SAD_300_2_min_rat', 'SAD_300_10_min_rat', 'SAD_300_20_min_rat', 'SAD_300_100_min_rat', 'SAD_300_200_min_rat', 'SAD_300_1000_min_rat', 'SAD_300_2000_min_rat', 'SAD_1000_1_min_rat', 'SAD_1000_2_min_rat', 'SAD_1000_10_min_rat', 'SAD_1000_20_min_rat', 'SAD_1000_100_min_rat', 'SAD_1000_200_min_rat', 'SAD_1000_1000_min_rat', 'SAD_1000_2000_min_rat'] 
+points = ['TSD_1_10_min_rat', 'TSD_1_20_min_rat', 'TSD_1_100_min_rat', 'TSD_1_200_min_rat', 'TSD_1_1000_min_rat', 'TSD_1_2000_min_rat', 'TSD_3_10_min_rat', 'TSD_3_20_min_rat', 'TSD_3_100_min_rat', 'TSD_3_200_min_rat', 'TSD_3_1000_min_rat', 'TSD_3_2000_min_rat', 'TSD_10_11_min_rat', 'TSD_10_20_min_rat', 'TSD_10_100_min_rat', 'TSD_10_200_min_rat', 'TSD_10_1000_min_rat', 'TSD_10_2000_min_rat', 'TSD_30_33_min_rat', 'TSD_30_100_min_rat', 'TSD_30_200_min_rat', 'TSD_30_1000_min_rat', 'TSD_30_2000_min_rat', 'TSD_100_110_min_rat', 'TSD_100_200_min_rat', 'TSD_100_1000_min_rat', 'TSD_100_2000_min_rat', 'TSD_300_330_min_rat', 'TSD_300_1000_min_rat', 'TSD_300_2000_min_rat', 'TSD_1000_1100_min_rat', 'TSD_1000_2000_min_rat']
+
+#ratio = [2]
+#points = ['SVD_1_1_min_rat', 'SVD_1_2_min_rat', 'SVD_1_10_min_rat', 'SVD_3_1_min_rat', 'SVD_3_2_min_rat', 'SVD_3_10_min_rat', 'SVD_10_1_min_rat', 'SVD_10_2_min_rat', 'SVD_10_10_min_rat', 'SVD_10_20_min_rat', 'SVD_30_1_min_rat', 'SVD_30_2_min_rat', 'SVD_30_10_min_rat', 'SVD_30_20_min_rat', 'SVD_30_100_min_rat', 'SVD_100_1_min_rat', 'SVD_100_2_min_rat', 'SVD_100_10_min_rat', 'SVD_100_20_min_rat', 'SVD_100_100_min_rat', 'SVD_100_200_min_rat', 'SVD_300_1_min_rat', 'SVD_300_2_min_rat', 'SVD_300_10_min_rat', 'SVD_300_20_min_rat', 'SVD_300_100_min_rat', 'SVD_300_200_min_rat', 'SVD_1000_1_min_rat', 'SVD_1000_2_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_20_min_rat', 'SVD_1000_100_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_2000_min_rat'] 
+#points = ['SAD_1_1_min_rat', 'SAD_1_2_min_rat', 'SAD_1_10_min_rat', 'SAD_1_20_min_rat', 'SAD_3_1_min_rat', 'SAD_3_2_min_rat', 'SAD_3_10_min_rat', 'SAD_3_20_min_rat', 'SAD_10_1_min_rat', 'SAD_10_2_min_rat', 'SAD_10_10_min_rat', 'SAD_10_20_min_rat', 'SAD_10_100_min_rat', 'SAD_30_1_min_rat', 'SAD_30_2_min_rat', 'SAD_30_10_min_rat', 'SAD_30_20_min_rat', 'SAD_30_100_min_rat', 'SAD_30_200_min_rat', 'SAD_100_1_min_rat', 'SAD_100_2_min_rat', 'SAD_100_10_min_rat', 'SAD_100_20_min_rat', 'SAD_100_100_min_rat', 'SAD_100_200_min_rat', 'SAD_300_1_min_rat', 'SAD_300_2_min_rat', 'SAD_300_10_min_rat', 'SAD_300_20_min_rat', 'SAD_300_100_min_rat', 'SAD_300_200_min_rat', 'SAD_1000_1_min_rat', 'SAD_1000_2_min_rat', 'SAD_1000_10_min_rat', 'SAD_1000_20_min_rat', 'SAD_1000_100_min_rat', 'SAD_1000_200_min_rat', 'SAD_1000_1000_min_rat', 'SAD_1000_2000_min_rat'] 
+
+#ratio = [5]
+#points = ['SVD_1_1_min_rat', 'SVD_1_2_min_rat', 'SVD_3_1_min_rat', 'SVD_3_2_min_rat', 'SVD_10_1_min_rat', 'SVD_10_2_min_rat', 'SVD_10_10_min_rat', 'SVD_10_20_min_rat', 'SVD_30_1_min_rat', 'SVD_30_2_min_rat', 'SVD_30_10_min_rat', 'SVD_30_20_min_rat', 'SVD_100_1_min_rat', 'SVD_100_2_min_rat', 'SVD_100_10_min_rat', 'SVD_100_20_min_rat', 'SVD_100_100_min_rat', 'SVD_100_200_min_rat', 'SVD_300_1_min_rat', 'SVD_300_2_min_rat', 'SVD_300_10_min_rat', 'SVD_300_20_min_rat', 'SVD_300_100_min_rat', 'SVD_300_200_min_rat', 'SVD_1000_1_min_rat', 'SVD_1000_2_min_rat', 'SVD_1000_10_min_rat', 'SVD_1000_20_min_rat', 'SVD_1000_100_min_rat', 'SVD_1000_200_min_rat', 'SVD_1000_1000_min_rat', 'SVD_1000_2000_min_rat']   
+#points = ['SAD_1_1_min_rat', 'SAD_1_2_min_rat', 'SAD_3_1_min_rat', 'SAD_3_2_min_rat', 'SAD_10_1_min_rat', 'SAD_10_2_min_rat', 'SAD_10_10_min_rat', 'SAD_10_20_min_rat', 'SAD_30_1_min_rat', 'SAD_30_2_min_rat', 'SAD_30_10_min_rat', 'SAD_30_20_min_rat', 'SAD_100_1_min_rat', 'SAD_100_2_min_rat', 'SAD_100_10_min_rat', 'SAD_100_20_min_rat', 'SAD_100_100_min_rat', 'SAD_100_200_min_rat', 'SAD_300_1_min_rat', 'SAD_300_2_min_rat', 'SAD_300_10_min_rat', 'SAD_300_20_min_rat', 'SAD_300_100_min_rat', 'SAD_300_200_min_rat', 'SAD_1000_1_min_rat', 'SAD_1000_2_min_rat', 'SAD_1000_10_min_rat', 'SAD_1000_20_min_rat', 'SAD_1000_100_min_rat', 'SAD_1000_200_min_rat', 'SAD_1000_1000_min_rat', 'SAD_1000_2000_min_rat']
+
+
+# bonus points for mono-Z
+#points = ['SVD_3_1_min_rat', 'SVD_3_2_min_rat', 'SVD_3_10_min_rat', 'SVD_3_20_min_rat', 'SVD_3_100_min_rat', 'SVD_3_200_min_rat', 'SVD_3_1000_min_rat', 'SVD_3_2000_min_rat', 'SVD_30_1_min_rat', 'SVD_30_2_min_rat', 'SVD_30_10_min_rat', 'SVD_30_20_min_rat', 'SVD_30_100_min_rat', 'SVD_30_200_min_rat', 'SVD_30_1000_min_rat', 'SVD_30_2000_min_rat', 'SVD_300_1_min_rat', 'SVD_300_2_min_rat', 'SVD_300_10_min_rat', 'SVD_300_20_min_rat', 'SVD_300_100_min_rat', 'SVD_300_200_min_rat', 'SVD_300_1000_min_rat', 'SVD_300_2000_min_rat']
+#points = ['SVD_3_1_min_rat', 'SVD_3_2_min_rat']
+
 systs = ['PDF+tune', 'scale']
+#systs = []
 gq_nom = 1
 
 localDir = "/home/ameliajb/workarea/SiMs_AtlasExternal_v2/"
@@ -26,7 +50,8 @@ cutflowDir = localDir + "CutFlow/txt_outputs/"
 # create the limits file
 #limits = localDir + "limits_store_SVD_Wmin.txt"
 #limits = localDir + "limits_store_SVD_final.txt"
-limits = localDir + "limits_store_" + modelType + "_final.txt"
+#limits = localDir + "limits_store_" + modelType + "_bonuspoints.txt"
+limits = localDir + "limits_store_" + modelType + "_rat" + str( ratio[0]) + ".txt"
 #limits = localDir + "limits_store_TSD_final.txt"
 with open(limits, "w") as f:
         f.write("This file is created with sigma_limit_script.py, it reads the sample names in from above (ie, NOT from masspoints(_2).py), cross sections from the LHEs, acceptances from the Cutflow/txt_outputs/cutflow_output_XXX.txt outputs, and calculates the limit on sigma and the coupling (sqrt(g_chi*g_q) = g_q*sqrt(rat)).\n\n")
@@ -65,12 +90,14 @@ for name in points:
 
         	       	print "Looking for baseName " + baseName
 
-			# want to continue if it can't find a sample
+			# want to check if baseName exists with '_1' after ratio value (older samples don't have this), rename if so, continue if it can't find a sample
 			events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + baseName + "/unweighted_events.lhe"
 			if not os.path.isfile(events_file):
-				print "Can't find LHE for " + baseName + "! Continuing..."
-				continue
-		
+				baseName = baseName.replace("rat"+ratstr, "rat"+ratstr+"_1")
+				events_file = MGdir + "SiM_" + modelType + "_monoZ_8TeV/Events/" + baseName + "/unweighted_events.lhe"
+				if not os.path.isfile(events_file):
+					print "Can't find LHE for " + baseName + "! Continuing..."
+                                        continue
 			if os.path.exists(events_file):
 				with open(events_file) as g:
     					for line in g:
@@ -87,7 +114,7 @@ for name in points:
 
 			# define a value for the limit on sigma in the best SR, define to be very large so will be easily replaced by a smaller value
 			bestSR = 'noSR'
-        	        bestSR_val = 10000
+        	        bestSR_val = 100000
 
 			if os.path.exists(acc_file):
 				with open(acc_file) as h:
@@ -140,6 +167,9 @@ for sh_name in points:
 	for rat in ratio:
 		ratstr = str(rat).replace('.', '')
 		name = sh_name + ratstr
+		# have to allow for the mismatch between old samples (with no additional '_1') and new samples (for mX = 3, 30, 300 or the handful of regenerated samples) which do have the extra '_1' piece
+		if ('3' in name) or ('SVD_1_2_min_rat02' in name) or ('SVD_1_2_min_rat05' in name) or ('SVD_1_2_min_rat1' in name) or ('SVD_1_2_min_rat2' in name) or ('SVD_1_2_min_rat5' in name) or ('SVD_1_10_min_rat1' in name) or ('SVD_1_10_min_rat2' in name) or ('SVD_1_20_min_rat1' in name):
+			name += '_1'
 		#print 'sig_gen[' + name + ']: ' + sig_gen[name]
 		#print 'acc[' + name + '150]: ' + acc[name + '150']
 		#print 'acc_stat[' + name + '150]: ' + acc_stat[name + '150']
@@ -152,36 +182,57 @@ for sh_name in points:
 		#print 'best_SR[' + name + ']: ' + best_SR[name]
 		#print 'In best SR, the acc and stat are: ' + acc[name + best_SR[name]] + ', ' + acc_stat[name + best_SR[name]]
 	
-
 		# A_nom_p is the nominal acceptance - the stat error
 		if name not in best_SR:
-			continue	
+			continue
+		#A_nom_p = max(0, acc[name + best_SR[name]] - acc_stat[name + best_SR[name]])	# set to 0 is acc_stat > acc
+		# want acc_stat / acc < 0.8 but still positive - else set to zero
+		A_nom_p = acc[name + best_SR[name]] - acc_stat[name + best_SR[name]]
+		if acc_stat[name + best_SR[name]]/acc[name + best_SR[name]] > 0.8 or acc_stat[name + best_SR[name]]/acc[name + best_SR[name]] < 0:
+			A_nom_p = 0
 
-		A_nom_p = max(0, acc[name + best_SR[name]] - acc_stat[name + best_SR[name]])	# set to 0 is acc_stat > acc
+		# check if A_nom_p is 0, if yes, and best_SR = '250', set best_SR to '150' and test again. Else, continue.
+		if A_nom_p == 0:
+			if best_SR[name] is '150':
+				print 'No limits exist for ' + name
+				continue
+			elif best_SR[name] is '250':
+				best_SR[name] = '150'
+				A_nom_p = acc[name + best_SR[name]] - acc_stat[name + best_SR[name]]
+				if acc_stat[name + best_SR[name]]/acc[name + best_SR[name]] > 0.8 :
+                        		A_nom_p = 0
+				if A_nom_p == 0:
+					print 'No limits exist for ' + name
+					continue
+				else:
+					print 'SR2 fails A_nom_p != 0 test, now setting best_SR = SR1'
+			else:
+				print 'Problem with best_SR??'
+				break
 
 		# sig_lim_95 is the limit on sigma calculated with A_nom_p, ie it is the limit with the statistical uncertainty included but not the systematics. sig_lim is the limit calculated with the nominal acceptance.
 		# f_lim_95 is the same but for the coupling. Here, f = sqrt(g_q g_chi) = g_q * sqrt(ratio).
-		if A_nom_p == 0:
-			print 'No limits exist for ' + name
+		#if A_nom_p == 0:
+		#	print 'No limits exist for ' + name
 			#break
-			continue
-		else:
-			sig_lim = N_exp[best_SR[name]] / (lumi * eff * acc[name + best_SR[name]])
-			sig_lim_obs = N_obs[best_SR[name]] / (lumi * eff * acc[name + best_SR[name]])
-			sig_lim_95 = N_exp[best_SR[name]] / (lumi * eff * A_nom_p)
-			sig_lim_95_obs = N_obs[best_SR[name]] / (lumi * eff * A_nom_p)
-			f_lim_obs = gq_nom * pow(rat, 0.5) * pow(sig_lim_obs/sig_gen[name], 0.25)
-			f_lim_95 = gq_nom * pow(rat, 0.5) * pow(sig_lim_95/sig_gen[name], 0.25)
-			f_lim_95_obs = gq_nom * pow(rat, 0.5) * pow(sig_lim_95_obs/sig_gen[name], 0.25)
+		#	continue
+		#else:
+		sig_lim = N_exp[best_SR[name]] / (lumi * eff * acc[name + best_SR[name]])
+		sig_lim_obs = N_obs[best_SR[name]] / (lumi * eff * acc[name + best_SR[name]])
+		sig_lim_95 = N_exp[best_SR[name]] / (lumi * eff * A_nom_p)
+		sig_lim_95_obs = N_obs[best_SR[name]] / (lumi * eff * A_nom_p)
+		f_lim_obs = gq_nom * pow(rat, 0.5) * pow(sig_lim_obs/sig_gen[name], 0.25)
+		f_lim_95 = gq_nom * pow(rat, 0.5) * pow(sig_lim_95/sig_gen[name], 0.25)
+		f_lim_95_obs = gq_nom * pow(rat, 0.5) * pow(sig_lim_95_obs/sig_gen[name], 0.25)
 		del_sig_gen_tot = 0
 		del_Ap_tot = 0
 		for iS in systs:
 			for iD in ['_up', '_down']:
-				#print 'sig_gen[' + name + '_' + iS + iD + ']: ' + sig_gen[name + '_' + iS + iD]
-				#print 'acc[' + name + '_' + iS + iD + '150]: ' + acc[name + '_' + iS + iD + '150']
-				#print 'acc_stat[' + name + '_' + iS + iD + '150]: ' + acc_stat[name + '_' + iS + iD + '150']
-        	                #print 'acc[' + name + '_' + iS + iD + '250]: ' + acc[name + '_' + iS + iD + '250']
-        	                #print 'acc_stat[' + name + '_' + iS + iD + '250]: ' + acc_stat[name + '_' + iS + iD + '250']
+				#print 'sig_gen[' + name + '_' + iS + iD + ']: ' + str(sig_gen[name + '_' + iS + iD])
+				#print 'acc[' + name + '_' + iS + iD + '150]: ' + str(acc[name + '_' + iS + iD + '150'])
+				#print 'acc_stat[' + name + '_' + iS + iD + '150]: ' + str(acc_stat[name + '_' + iS + iD + '150'])
+        	                #print 'acc[' + name + '_' + iS + iD + '250]: ' + str(acc[name + '_' + iS + iD + '250'])
+        	                #print 'acc_stat[' + name + '_' + iS + iD + '250]: ' + str(acc_stat[name + '_' + iS + iD + '250'])
         	                #print 'acc[' + name + '_' + iS + iD + '350]: ' + acc[name + '_' + iS + iD + '350']
         	                #print 'acc_stat[' + name + '_' + iS + iD + '350]: ' + acc_stat[name + '_' + iS + iD + '350']
         	                #print 'acc[' + name + '_' + iS + iD + '450]: ' + acc[name + '_' + iS + iD + '450']
